@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /* Full dark mode base */
+  background-color: #000000; /* exact requirement */
+  font-family: 'Source Sans 3', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  @apply text-slate-200 antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tweak form controls for dark mode */
+textarea, input[type="file"] {
+  @apply text-slate-200;
+}
+
+::placeholder {
+  color: theme("colors.slate.400");
+  opacity: 1;
+}

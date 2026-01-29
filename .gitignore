@@ -1,0 +1,12 @@
+node_modules
+.env
+dist
+*.db
+*.db-journal
+uploads/
+logs/
+*.log
+.DS_Store
+Archive.zip
+backend.zip
+frontend.zip
