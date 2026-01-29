@@ -330,15 +330,22 @@ function App() {
 
   // Lock background scroll when auth modal is open
   useEffect(() => {
-    const shouldLock = hasResults && !currentUser && showAuthModal;
-    if (shouldLock) {
+    if (showAuthModal && !currentUser) {
       const originalStyle = document.body.style.overflow;
+      const originalPaddingRight = document.body.style.paddingRight;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      
       document.body.style.overflow = "hidden";
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+      
       return () => {
         document.body.style.overflow = originalStyle;
+        document.body.style.paddingRight = originalPaddingRight;
       };
     }
-  }, [hasResults, currentUser, showAuthModal]);
+  }, [showAuthModal, currentUser]);
 
   useEffect(() => {
     if (showProfile && currentUser) {
@@ -428,7 +435,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white shadow-sm">
+      <header className={`sticky top-0 border-b border-gray-200 bg-white shadow-sm ${showAuthModal ? 'z-30' : 'z-50'}`}>
         <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between flex-wrap gap-5">
             <button
@@ -942,8 +949,21 @@ function App() {
           )}
 
         {!currentUser && showAuthModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, width: '100vw', height: '100vh' }}>
+            <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+              {/* Only show close button when there are NO results - if results exist, user MUST login */}
+              {!hasResults && (
+                <button
+                  type="button"
+                  onClick={() => setShowAuthModal(false)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label="Close modal"
+                >
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
               <h2 className="mb-4 text-xl font-bold text-gray-900 text-center">
                 {authMode === "signup" ? "Create your free account to view results" : "Log in to view your results"}
               </h2>
@@ -951,17 +971,25 @@ function App() {
                 Save your analysis and come back anytime. It takes less than a minute.
               </p>
 
-              <div className="mb-4 flex justify-center gap-2 rounded-full bg-gray-100 p-1 text-sm font-medium">
+              <div className="mb-4 flex justify-center rounded-full bg-gray-100 p-1 text-sm font-medium">
                 <button
                   type="button"
-                  className={`flex-1 rounded-full px-3 py-1.5 ${authMode === "signup" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500"}`}
+                  className={`flex-1 px-3 py-1.5 transition-all ${
+                    authMode === "signup" 
+                      ? "bg-white text-gray-900 shadow-sm rounded-full" 
+                      : "text-gray-500"
+                  }`}
                   onClick={() => setAuthMode("signup")}
                 >
                   Sign up
                 </button>
                 <button
                   type="button"
-                  className={`flex-1 rounded-full px-3 py-1.5 ${authMode === "login" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500"}`}
+                  className={`flex-1 px-3 py-1.5 transition-all ${
+                    authMode === "login" 
+                      ? "bg-white text-gray-900 shadow-sm rounded-full" 
+                      : "text-gray-500"
+                  }`}
                   onClick={() => setAuthMode("login")}
                 >
                   Log in
