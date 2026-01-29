@@ -414,6 +414,17 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleScrollToUpload = () => {
+    const uploadSection = document.getElementById("upload-section");
+    if (uploadSection) {
+      // Scroll with offset to show the section properly
+      const offset = 100; // Offset in pixels from top
+      const elementPosition = uploadSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Header */}
@@ -432,21 +443,13 @@ function App() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-2xl font-bold text-gray-900">Resume Analyzer</h1>
+                  <h1 className="text-2xl font-bold text-gray-900">Qualifyd.ai</h1>
                   <span className="rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold text-gray-700">BETA</span>
                 </div>
                 <p className="text-xs text-gray-600">AI-powered resume optimization</p>
               </div>
             </button>
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
-                <span className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700">
-                  🎯 Rule-based
-                </span>
-                <span className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700">
-                  ✨ AI Optional
-                </span>
-              </div>
               <div className="relative">
                 {currentUser ? (
                   <>
@@ -493,7 +496,7 @@ function App() {
                 ) : (
                   <button
                     type="button"
-                    className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50"
+                    className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
                     onClick={() => {
                       setAuthMode("login");
                       setShowAuthModal(true);
@@ -511,8 +514,142 @@ function App() {
       <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {!showProfile && (
         <>
+        {/* Hero Section */}
+        <section className="flex min-h-[85vh] items-center py-12">
+          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Content */}
+              <div className="space-y-6 text-left">
+                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                  Optimize your resume to get more interviews
+                </h1>
+                <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
+                  Qualifyd.ai helps you optimize your resume for any job, highlighting the key experience and skills recruiters need to see.
+                </p>
+                <div className="pt-2">
+                  <button
+                    onClick={handleScrollToUpload}
+                    className="rounded-lg bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
+                  >
+                    Scan Your Resume For Free
+                  </button>
+                </div>
+                <div className="pt-4">
+                  <p className="text-sm font-medium text-gray-500 mb-4">Qualifyd.ai users have been hired by:</p>
+                  <div className="flex flex-wrap items-center gap-8 opacity-60">
+                    {/* Facebook/Meta */}
+                    <div className="text-base font-semibold text-gray-600 tracking-wide">Meta</div>
+                    {/* Apple */}
+                    <div className="text-base font-semibold text-gray-600 tracking-wide">Apple</div>
+                    {/* Amazon */}
+                    <div className="text-base font-semibold text-gray-600 tracking-wide">Amazon</div>
+                    {/* Netflix */}
+                    <div className="text-base font-semibold text-gray-600 tracking-wide">Netflix</div>
+                    {/* Google */}
+                    <div className="text-base font-semibold text-gray-600 tracking-wide">Google</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Visual Element */}
+              <div className="relative hidden lg:block">
+                <div className="relative rounded-2xl bg-gradient-to-br from-blue-50 via-purple-50 to-emerald-50 p-8 shadow-2xl">
+                  {/* Animated Background Shapes */}
+                  <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                    <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-blue-200 opacity-20 blur-3xl"></div>
+                    <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-purple-200 opacity-20 blur-3xl"></div>
+                  </div>
+
+                  {/* Main Visual Content */}
+                  <div className="relative space-y-6">
+                    {/* Score Cards */}
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="bg-white rounded-xl p-4 shadow-lg text-center">
+                        <div className="text-3xl font-bold text-emerald-600">92</div>
+                        <div className="text-xs text-gray-600 mt-1">Fit Score</div>
+                      </div>
+                      <div className="bg-white rounded-xl p-4 shadow-lg text-center">
+                        <div className="text-3xl font-bold text-blue-600">88</div>
+                        <div className="text-xs text-gray-600 mt-1">ATS Score</div>
+                      </div>
+                      <div className="bg-white rounded-xl p-4 shadow-lg text-center">
+                        <div className="text-3xl font-bold text-purple-600">85</div>
+                        <div className="text-xs text-gray-600 mt-1">Writing</div>
+                      </div>
+                    </div>
+
+                    {/* Progress Bars */}
+                    <div className="bg-white rounded-xl p-6 shadow-lg space-y-4">
+                      <div>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="font-medium text-gray-700">Skills Match</span>
+                          <span className="text-gray-500">95%</span>
+                        </div>
+                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full" style={{ width: '95%' }}></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="font-medium text-gray-700">Keywords</span>
+                          <span className="text-gray-500">87%</span>
+                        </div>
+                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full" style={{ width: '87%' }}></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="font-medium text-gray-700">Formatting</span>
+                          <span className="text-gray-500">92%</span>
+                        </div>
+                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full" style={{ width: '92%' }}></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Icons */}
+                    <div className="flex justify-center gap-6 pt-2">
+                      <div className="flex flex-col items-center">
+                        <div className="bg-blue-100 rounded-full p-3">
+                          <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                        </div>
+                        <span className="text-xs text-gray-600 mt-2">Resume</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <div className="bg-purple-100 rounded-full p-3">
+                          <svg className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                          </svg>
+                        </div>
+                        <span className="text-xs text-gray-600 mt-2">Analyze</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <div className="bg-emerald-100 rounded-full p-3">
+                          <svg className="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <span className="text-xs text-gray-600 mt-2">Optimize</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How it works Section */}
+        <section className="mb-16 pt-12">
+          <HowItWorksGrid />
+        </section>
+
         {/* Upload Section */}
-        <div className="mb-12 space-y-6">
+        <div id="upload-section" className="mb-12 space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-6">
               <label className="mb-3 block text-lg font-semibold text-gray-900">
@@ -1097,11 +1234,6 @@ function App() {
           </div>
         </section> */}
 
-        {/* How it works Section */}
-        <section className="mb-16 border-t border-gray-200 pt-16">
-          <HowItWorksGrid />
-        </section>
-
         {/* What you get Section */}
         <section className="mb-16 border-t border-gray-200 pt-16">
           <WhatYouGetGrid />
@@ -1125,11 +1257,8 @@ function App() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="text-center md:text-left flex flex-col items-center md:items-start">
-              <div className="mb-4 w-12 h-12">
-                <img src="../src/assets/qb_logo.png" alt="Logo" />
-              </div>
               <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start text-sm">
-                <span className="font-semibold text-gray-900">Resume ↔ JD Analyzer</span>
+                <span className="font-semibold text-gray-900">Qualifyd.ai</span>
                 <span className="text-gray-400">|</span>
                 <span className="text-gray-700">Rule-based scoring with optional AI rewrites</span>
               </div>
