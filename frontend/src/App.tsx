@@ -247,8 +247,22 @@ function App() {
   const [isHowItWorksVisible, setIsHowItWorksVisible] = useState(false);
 
   const handleAnalyze = async () => {
+    // Clear previous errors
+    setAnalyzeError(null);
+
+    // Validate both fields
+    if (!jdText.trim() && !file) {
+      setAnalyzeError("Please fill in both the job description and upload a resume file to analyze.");
+      return;
+    }
+
+    if (!jdText.trim()) {
+      setAnalyzeError("Please fill in the job description to continue.");
+      return;
+    }
+
     if (!file) {
-      setAnalyzeError("Select a resume file first");
+      setAnalyzeError("Please upload a resume file to continue.");
       return;
     }
 
@@ -703,9 +717,13 @@ function App() {
             </div>
             <div className="lg:col-span-6">
               <label className="mb-2 sm:mb-3 block text-base sm:text-lg font-semibold text-gray-900">
-                Upload Resume
+                Upload Resume {!file && <span className="text-red-500">*</span>}
               </label>
-              <div className="group relative overflow-hidden rounded-xl bg-primary-600 text-center transition-all">
+              <div className={`group relative overflow-hidden rounded-xl bg-primary-600 text-center transition-all ${
+                !file && analyzeError && analyzeError.includes("resume file")
+                  ? "ring-2 ring-red-500 ring-offset-2"
+                  : ""
+              }`}>
                 <div className="m-2 sm:m-3 rounded-xl border-2 border-dashed border-gray-300 bg-primary-700 p-6 sm:p-8 lg:p-10">
                   <input
                     type="file"
@@ -752,6 +770,9 @@ function App() {
                   </div>
                 </div>
               </div>
+              {!file && analyzeError && analyzeError.includes("resume file") && (
+                <p className="mt-1 text-xs sm:text-sm text-red-600">This field is required</p>
+              )}
               <button
                 className="mt-4 sm:mt-5 w-full rounded-xl bg-primary-500 px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-600 hover:shadow-xl disabled:cursor-not-allowed disabled:shadow-none"
                 onClick={handleAnalyze}
