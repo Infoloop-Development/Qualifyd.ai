@@ -243,6 +243,7 @@ function App() {
   const [analysesLoading, setAnalysesLoading] = useState(false);
   const [analysesError, setAnalysesError] = useState<string | null>(null);
   const [expandedAnalysisId, setExpandedAnalysisId] = useState<number | null>(null);
+  const [isHowItWorksVisible, setIsHowItWorksVisible] = useState(false);
 
   const handleAnalyze = async () => {
     if (!file) {
@@ -329,6 +330,34 @@ function App() {
         });
     }
   }, [showProfile, currentUser]);
+
+  // Intersection Observer for "How it works" section visibility on scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsHowItWorksVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the section is visible
+        rootMargin: '0px 0px -50px 0px', // Trigger slightly before it enters viewport
+      }
+    );
+
+    const howItWorksSection = document.getElementById('how-it-works-section');
+    if (howItWorksSection) {
+      observer.observe(howItWorksSection);
+    }
+
+    return () => {
+      if (howItWorksSection) {
+        observer.unobserve(howItWorksSection);
+      }
+    };
+  }, []);
 
   const handleAuthInputChange = (field: string, value: string) => {
     setAuthForm((prev) => ({ ...prev, [field]: value }));
@@ -492,7 +521,7 @@ function App() {
           <div className="mx-auto w-full max-w-7xl px-3 sm:px-4 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               {/* Left Column - Content */}
-              <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-left">
+              <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-left order-1 lg:order-1">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900">
                   Optimize your resume to get more interviews
                 </h1>
@@ -557,8 +586,8 @@ function App() {
               </div>
 
               {/* Right Column - Visual Element */}
-              <div className="relative hidden lg:block">
-                <div className="relative rounded-2xl bg-gradient-to-br from-blue-50 via-purple-50 to-emerald-50 p-8 shadow-2xl">
+              <div className="relative order-2 lg:order-2 mt-8 lg:mt-0">
+                <div className="relative rounded-2xl bg-gradient-to-br from-blue-50 via-purple-50 to-emerald-50 p-4 sm:p-6 lg:p-8 shadow-2xl">
                   {/* Animated Background Shapes */}
                   <div className="absolute inset-0 overflow-hidden rounded-2xl">
                     <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-blue-200 opacity-20 blur-3xl"></div>
@@ -649,7 +678,12 @@ function App() {
         </section>
 
         {/* How it works Section */}
-        <section className="mb-10 sm:mb-12 lg:mb-16 pt-8 sm:pt-10 lg:pt-12">
+        <section 
+          id="how-it-works-section"
+          className={`mb-10 sm:mb-12 lg:mb-16 pt-8 sm:pt-10 lg:pt-12 transition-opacity duration-700 ${
+            isHowItWorksVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
           <HowItWorksGrid />
         </section>
 
