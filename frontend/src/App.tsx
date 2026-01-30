@@ -52,7 +52,7 @@ function HowItWorksGrid() {
     {
       icon: <MdOutlineEditNote fontSize={40} className="fill-primary-500" />,
       title: "Paste JD",
-      description: "Paste the job description and upload PDF/DOCX resume",
+      description: "Paste the job description to set context for the role and its requirements.",
       bgColor: "bg-primary-100",
     },
     {
