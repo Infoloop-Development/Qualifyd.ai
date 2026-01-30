@@ -436,7 +436,7 @@ function App() {
       )}
       <div className="relative z-10">
       {/* Header */}
-      <header className={`sticky top-0 border-b border-gray-200 bg-white shadow-sm ${showAuthModal ? 'z-30' : 'z-50'}`}>
+      <header className={`sticky top-0 border-b shadow-sm ${showAuthModal ? 'z-30' : 'z-50'} ${!showProfile && !hasResults ? 'border-white/20 bg-white/10 backdrop-blur-sm' : 'border-gray-200 bg-white'}`}>
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5">
           <div className="flex items-center justify-between flex-wrap gap-3 sm:gap-5">
             <button
@@ -449,7 +449,7 @@ function App() {
                 alt="Qualifyd.ai Logo" 
                 className="h-8 w-auto sm:h-10 lg:h-12 object-contain"
               />
-              <p className="text-[10px] sm:text-xs text-gray-600 hidden xs:block">Resume optimization & ATS analysis</p>
+              <p className={`text-[10px] sm:text-xs hidden xs:block ${!showProfile && !hasResults ? 'text-white/80' : 'text-gray-600'}`}>Resume optimization & ATS analysis</p>
             </button>
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="relative">
@@ -522,10 +522,10 @@ function App() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               {/* Left Column - Content */}
               <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-center sm:text-left order-1 lg:order-1">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900">
+                <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight ${!showProfile && !hasResults ? 'text-white' : 'text-gray-900'}`}>
                   Optimize your resume to get more interviews
                 </h1>
-                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto sm:mx-0">
+                <p className={`text-base sm:text-lg leading-relaxed max-w-xl mx-auto sm:mx-0 ${!showProfile && !hasResults ? 'text-white/90' : 'text-gray-600'}`}>
                   Qualifyd.ai helps you optimize your resume for any job, highlighting the key experience and skills recruiters need to see.
                 </p>
                 <div className="pt-2 flex justify-center sm:justify-start">
@@ -537,7 +537,7 @@ function App() {
                   </button>
                 </div>
                 <div className="pt-3 sm:pt-4">
-                  <p className="text-xs sm:text-sm font-medium text-gray-500 mb-3 sm:mb-4 text-center sm:text-left">Qualifyd.ai users have been hired by:</p>
+                  <p className={`text-xs sm:text-sm font-medium mb-3 sm:mb-4 text-center sm:text-left ${!showProfile && !hasResults ? 'text-white/80' : 'text-gray-500'}`}>Qualifyd.ai users have been hired by:</p>
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 lg:gap-8 opacity-70">
                     {/* Apple */}
                     <img 
