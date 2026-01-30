@@ -429,7 +429,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-transparent text-gray-900 relative">
+      {/* Vanta Fog Background */}
+      <div id="vanta-bg" className="fixed inset-0 -z-10"></div>
+      <div className="relative z-10">
       {/* Header */}
       <header className={`sticky top-0 border-b border-gray-200 bg-white shadow-sm ${showAuthModal ? 'z-30' : 'z-50'}`}>
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5">

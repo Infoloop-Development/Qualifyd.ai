@@ -172,6 +172,10 @@
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
   
+  <!-- Vanta.js Fog Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+  
   <script>
     // Hide loader when React app loads
     window.addEventListener('load', function() {
@@ -185,6 +189,39 @@
         }
       }, 100);
     });
+
+    // Initialize Vanta Fog effect after page loads
+    let vantaEffect;
+    function initVanta() {
+      if (typeof VANTA !== 'undefined') {
+        const vantaBg = document.getElementById('vanta-bg');
+        if (vantaBg) {
+          vantaEffect = VANTA.FOG({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            highlightColor: 0x3c967c,
+            midtoneColor: 0x15a6b3,
+            lowlightColor: 0x040606,
+            baseColor: 0xffffff,
+            blurFactor: 0.90,
+            speed: 4.50,
+            zoom: 0.40
+          });
+        }
+      } else {
+        // Retry if VANTA is not loaded yet
+        setTimeout(initVanta, 100);
+      }
+    }
+
+    // Initialize when DOM is ready and React has mounted
+    setTimeout(function() {
+      initVanta();
+    }, 500);
   </script>
 </body>
 
