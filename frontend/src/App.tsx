@@ -116,27 +116,27 @@ function WhatYouGetGrid() {
   const items = [
     {
       icon: <FaPen size={30} className="fill-primary-500" />, text:
-        "Fit / ATS / Writing scores",
+        "Fit, ATS, and writing scores",
     },
     {
       icon: <GrDocumentMissing size={30} className="stroke-primary-500" />, text:
-        "Missing skills and keywords to add",
+        "Missing skills and keywords",
     },
     {
       icon: <GoProjectSymlink size={30} className="fill-primary-500" />, text:
-        "Missing sections (Summary, Skills, Projects, Education)",
+        "Missing resume sections",
     },
     {
       icon: <SiVictoriametrics size={30} className="fill-primary-500" />, text:
-        "Bullet/style issues (no metrics, weak verbs, passive voice, too long)",
+        "Bullet, writing & grammatical issues",
     },
     {
       icon: <MdEmojiFlags size={30} className="fill-primary-500" />, text:
-        "Formatting flags (columns/images if detected)",
+        "Formatting flags",
     },
     {
       icon: <GiShintoShrineMirror size={30} className="fill-primary-500" />, text:
-        "Summary hints and writing suggestions"
+        "Summary suggestions with optional AI rewrites"
     }
   ];
 
