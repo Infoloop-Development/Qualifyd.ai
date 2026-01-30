@@ -634,7 +634,7 @@ function App() {
               {/* Left Column - Content */}
               <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-center sm:text-left order-1 lg:order-1">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900">
-                  Optimize your resume to get more interviews
+                  Build an ATS-optimized resume that wins interviews
                 </h1>
                 <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto sm:mx-0">
                   Qualifyd.ai helps you optimize your resume for any job, highlighting the key experience and skills recruiters need to see.
