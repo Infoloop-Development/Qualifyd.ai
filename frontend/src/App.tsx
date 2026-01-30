@@ -637,7 +637,7 @@ function App() {
                   Build an ATS-optimized resume that wins interviews
                 </h1>
                 <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto sm:mx-0">
-                  Qualifyd.ai helps you optimize your resume for any job, highlighting the key experience and skills recruiters need to see.
+                  Qualifyd.ai makes your resume a stronger match for every role you apply to.
                 </p>
                 <div className="pt-2 flex justify-center sm:justify-start">
                   <button
