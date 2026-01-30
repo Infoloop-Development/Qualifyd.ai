@@ -79,7 +79,7 @@ function HowItWorksGrid() {
 
   return (
     <section className="space-y-6 sm:space-y-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900">
+      <h2 className={`text-2xl sm:text-3xl font-bold text-center ${!showProfile && !hasResults ? 'text-white' : 'text-gray-900'}`}>
         How it works
       </h2>
 
@@ -101,7 +101,7 @@ function HowItWorksGrid() {
               <h3 className="text-base sm:text-lg font-medium text-gray-900">
                 {step.title}
               </h3>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed px-2">
+              <p className={`text-xs sm:text-sm leading-relaxed px-2 ${!showProfile && !hasResults ? 'text-white/80' : 'text-gray-500'}`}>
                 {step.description}
               </p>
             </div>
@@ -142,7 +142,7 @@ function WhatYouGetGrid() {
 
   return (
     <section className="space-y-6 sm:space-y-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center">What you get</h2>
+      <h2 className={`text-2xl sm:text-3xl font-bold text-center ${!showProfile && !hasResults ? 'text-white' : 'text-gray-900'}`}>What you get</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {items.map((item, idx) => (
           <div key={idx} className="flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 p-4 sm:p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all">
@@ -210,7 +210,7 @@ function HowToUseGrid() {
                 {idx + 1}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm sm:text-base lg:text-lg text-gray-900 font-medium leading-relaxed text-left">{step}</p>
+                <p className={`text-sm sm:text-base lg:text-lg font-medium leading-relaxed text-left ${!showProfile && !hasResults ? 'text-white' : 'text-gray-900'}`}>{step}</p>
               </div>
             </div>
           ))}
