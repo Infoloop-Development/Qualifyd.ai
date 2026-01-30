@@ -516,14 +516,14 @@ function App() {
           <div className="mx-auto w-full max-w-7xl px-3 sm:px-4 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               {/* Left Column - Content */}
-              <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-left order-1 lg:order-1">
+              <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-center sm:text-left order-1 lg:order-1">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900">
                   Optimize your resume to get more interviews
                 </h1>
-                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto sm:mx-0">
                   Qualifyd.ai helps you optimize your resume for any job, highlighting the key experience and skills recruiters need to see.
                 </p>
-                <div className="pt-2">
+                <div className="pt-2 flex justify-center sm:justify-start">
                   <button
                     onClick={handleScrollToUpload}
                     className="rounded-lg bg-primary-500 px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-600 hover:shadow-xl w-full sm:w-auto"
