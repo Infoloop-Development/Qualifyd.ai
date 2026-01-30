@@ -887,8 +887,7 @@ function App() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
               <div className="lg:col-span-6 flex flex-col gap-4 sm:gap-6">
                 <p className="font-medium text-sm sm:text-base lg:text-lg">
-                  Resume ↔ JD analyzer that parses both, scores Fit/ATS/Writing, and delivers
-                  actionable, rule-based improvements.
+                  Analyzes your resume against job descriptions, scores fit, ATS alignment, and writing quality, then delivers actionable improvement recommendations.
                 </p>
               </div>
               <div className="lg:col-span-6">
@@ -1425,8 +1424,7 @@ style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, width: '100vw'
             <div className="space-y-4">
               <h2 className="text-4xl font-bold text-gray-900">Overview</h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Resume ↔ JD analyzer that parses both, scores Fit/ATS/Writing, and delivers actionable, rule-based
-                improvements.
+                Analyzes your resume against job descriptions, scores fit, ATS alignment, and writing quality, then delivers actionable improvement recommendations.
               </p>
             </div>
           </div>
