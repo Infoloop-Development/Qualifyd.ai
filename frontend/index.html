@@ -205,76 +205,93 @@
 
     // Initialize Vanta Dots effect after page loads - only on main page
     let vantaEffect;
+    let initAttempts = 0;
+    const maxAttempts = 20;
+    
     function initVanta() {
-      if (typeof VANTA !== 'undefined') {
-        const vantaBg = document.getElementById('vanta-bg');
-        if (vantaBg && vantaBg.offsetParent !== null) {
-          // Only initialize if element is visible (main page)
-          if (vantaEffect && vantaEffect.destroy) {
-            vantaEffect.destroy();
-          }
+      initAttempts++;
+      
+      // Check if VANTA is loaded
+      if (typeof VANTA === 'undefined' || typeof VANTA.DOTS === 'undefined') {
+        if (initAttempts < maxAttempts) {
+          setTimeout(initVanta, 200);
+        } else {
+          console.warn('VANTA.DOTS not loaded after max attempts');
+        }
+        return;
+      }
+      
+      const vantaBg = document.getElementById('vanta-bg');
+      
+      if (vantaBg) {
+        // Element exists (main page)
+        if (vantaEffect && vantaEffect.destroy) {
+          vantaEffect.destroy();
+          vantaEffect = null;
+        }
+        
+        try {
+          vantaEffect = VANTA.DOTS({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3c967c,
+            color2: 0x16a6b4,
+            backgroundColor: 0xffffff,
+            size: 1.40,
+            spacing: 18.00,
+            showLines: false
+          });
           
-          // Initialize with a slight delay to ensure smooth transition
-          setTimeout(function() {
-            vantaEffect = VANTA.DOTS({
-              el: "#vanta-bg",
-              mouseControls: true,
-              touchControls: true,
-              gyroControls: false,
-              minHeight: 200.00,
-              minWidth: 200.00,
-              scale: 1.00,
-              scaleMobile: 1.00,
-              color: 0x3c967c,
-              color2: 0x16a6b4,
-              backgroundColor: 0xffffff,
-              size: 1.40,
-              spacing: 18.00,
-              showLines: false
-            });
-            
-            // Fade in the effect smoothly
-            setTimeout(function() {
-              if (vantaBg) {
-                vantaBg.classList.add('loaded');
-              }
-            }, 200);
-          }, 100);
-        } else if (vantaEffect && vantaEffect.destroy) {
-          // Destroy effect if we're not on main page
-          const vantaBg = document.getElementById('vanta-bg');
-          if (vantaBg) {
-            vantaBg.classList.remove('loaded');
-          }
-          setTimeout(function() {
-            if (vantaEffect && vantaEffect.destroy) {
-              vantaEffect.destroy();
-              vantaEffect = null;
-            }
-          }, 300);
+          vantaBg.classList.add('loaded');
+          console.log('Vanta DOTS initialized successfully');
+        } catch (error) {
+          console.error('Error initializing Vanta DOTS:', error);
         }
       } else {
-        // Retry if VANTA is not loaded yet
-        setTimeout(initVanta, 100);
+        // Element doesn't exist (inner page) - destroy if exists
+        if (vantaEffect && vantaEffect.destroy) {
+          vantaEffect.destroy();
+          vantaEffect = null;
+        }
       }
     }
 
-    // Initialize when DOM is ready and React has mounted
+    // Initialize when page loads
+    window.addEventListener('load', function() {
+      setTimeout(initVanta, 500);
+    });
+
+    // Also try after React mounts
     setTimeout(function() {
       initVanta();
-    }, 500);
+    }, 1500);
 
-    // Watch for route changes and reinitialize/destroy effect
-    let lastPath = window.location.pathname;
-    setInterval(function() {
-      const currentPath = window.location.pathname;
-      if (currentPath !== lastPath) {
-        lastPath = currentPath;
-        setTimeout(initVanta, 300);
-      } else {
+    // Watch for element changes
+    const observer = new MutationObserver(function(mutations) {
+      const vantaBg = document.getElementById('vanta-bg');
+      if (vantaBg && !vantaEffect) {
         initVanta();
+      } else if (!vantaBg && vantaEffect) {
+        if (vantaEffect.destroy) {
+          vantaEffect.destroy();
+          vantaEffect = null;
+        }
       }
-    }, 500);
+    });
+
+    // Start observing
+    setTimeout(function() {
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    }, 1000);
   </script>
 </body>
 
