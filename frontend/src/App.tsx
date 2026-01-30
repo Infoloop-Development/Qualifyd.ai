@@ -14,7 +14,6 @@ import { MdEmojiFlags, MdOutlineEditNote } from "react-icons/md";
 import { SiPastebin, SiVictoriametrics } from "react-icons/si";
 import { GoGoal, GoProjectSymlink } from "react-icons/go";
 import { BsGrid3X2Gap } from "react-icons/bs";
-import { BsRobot } from "react-icons/bs";
 import { FaPen } from "react-icons/fa";
 import { GrDocumentMissing } from "react-icons/gr";
 import { GiShintoShrineMirror } from "react-icons/gi";
