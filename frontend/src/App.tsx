@@ -1220,8 +1220,8 @@ function App() {
                 >
                   {authLoading
                     ? authMode === "signup"
-                      ? "Creating account..."
-                      : "Logging in..."
+                      ? "Creating account"
+                      : "Logging in"
                     : authMode === "signup"
                     ? "Sign up to view results"
                     : "Log in to view results"}
