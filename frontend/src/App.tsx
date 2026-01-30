@@ -730,7 +730,10 @@ function App() {
                     accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     onChange={(e) => {
                       const f = e.target.files?.[0];
-                      if (f) setFile(f);
+                      if (f) {
+                        setFile(f);
+                        if (analyzeError) setAnalyzeError(null);
+                      }
                     }}
                     className="absolute inset-0 opacity-0 cursor-pointer"
                   />
