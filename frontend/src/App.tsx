@@ -509,17 +509,49 @@ function App() {
                 </div>
                 <div className="pt-3 sm:pt-4">
                   <p className="text-xs sm:text-sm font-medium text-gray-500 mb-3 sm:mb-4">Qualifyd.ai users have been hired by:</p>
-                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 opacity-60">
-                    {/* Facebook/Meta */}
-                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Meta</div>
+                  <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-8 opacity-70">
                     {/* Apple */}
-                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Apple</div>
+                    <img 
+                      src="https://static.jobscan.co/blog/uploads/Apple_logo_grey.png" 
+                      alt="Apple logo" 
+                      className="h-6 sm:h-7 lg:h-8 object-contain grayscale hover:grayscale-0 transition-all"
+                      loading="lazy"
+                    />
                     {/* Amazon */}
-                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Amazon</div>
-                    {/* Netflix */}
-                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Netflix</div>
-                    {/* Google */}
-                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Google</div>
+                    <img 
+                      src="https://static.jobscan.co/blog/uploads/Amazon-logo.png" 
+                      alt="Amazon logo" 
+                      className="h-6 sm:h-7 lg:h-8 object-contain grayscale hover:grayscale-0 transition-all"
+                      loading="lazy"
+                    />
+                    {/* Facebook/Meta */}
+                    <img 
+                      src="https://static.jobscan.co/blog/uploads/Facebook-logo.png" 
+                      alt="Meta logo" 
+                      className="h-6 sm:h-7 lg:h-8 object-contain grayscale hover:grayscale-0 transition-all"
+                      loading="lazy"
+                    />
+                    {/* General Electric */}
+                    <img 
+                      src="https://static.jobscan.co/blog/uploads/1024px-General_Electric_logo.svg_.png" 
+                      alt="General Electric logo" 
+                      className="h-6 sm:h-7 lg:h-8 object-contain grayscale hover:grayscale-0 transition-all"
+                      loading="lazy"
+                    />
+                    {/* Uber */}
+                    <img 
+                      src="https://static.jobscan.co/blog/uploads/Uber-Logo.png" 
+                      alt="Uber logo" 
+                      className="h-6 sm:h-7 lg:h-8 object-contain grayscale hover:grayscale-0 transition-all"
+                      loading="lazy"
+                    />
+                    {/* IBM */}
+                    <img 
+                      src="https://static.jobscan.co/blog/uploads/purepng.com-ibm-logologobrand-logoiconslogos-251519939176ka7y8.png" 
+                      alt="IBM logo" 
+                      className="h-6 sm:h-7 lg:h-8 object-contain grayscale hover:grayscale-0 transition-all"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </div>
