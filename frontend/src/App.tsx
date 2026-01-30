@@ -1278,7 +1278,7 @@ function App() {
               </div>
               <button
                 type="button"
-                className="rounded-full border border-gray-200 bg-white px-3 py-2 sm:px-4 text-xs sm:text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 min-h-[44px] whitespace-nowrap"
+                className="rounded-full border border-gray-200 bg-white px-3 py-2 sm:px-4 text-xs sm:text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 min-h-[44px] whitespace-nowrap w-full sm:w-auto"
                 onClick={() => setShowProfile(false)}
               >
                 <span className="hidden sm:inline">← </span>Back to analyzer
