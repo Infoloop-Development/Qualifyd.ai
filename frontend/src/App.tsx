@@ -1292,7 +1292,7 @@ function App() {
                 <span className="text-gray-700">Rule-based scoring with optional AI rewrites</span>
               </div>
               <p className="mt-2 text-xs text-gray-600">
-                Made with love, open-source and free for the community by Infoloop.
+                Made with love for the community by <a href="https://infoloop.co/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-medium transition-colors">Infoloop Technologies LLP</a>.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-700">
