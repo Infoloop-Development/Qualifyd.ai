@@ -69,9 +69,9 @@ function HowItWorksGrid() {
     },
     {
       icon: <BsGrid3X2Gap fontSize={40} className="fill-orange-700" />,
-      title: "Surface Gaps",
+      title: "Gap Detection",
       description:
-        "Surface gaps: missing skills/sections, bullet issues, format flags",
+        "Identifies missing skills, content gaps, bullet issues, and formatting flags.",
       bgColor: "bg-orange-100",
     },
   ];
