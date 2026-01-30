@@ -149,15 +149,19 @@
     }
     
     /* Prevent flash of unstyled content */
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       background-color: #ffffff;
       transition: background-color 0.3s ease-in-out;
+      height: 100%;
+      min-height: 100vh;
+      min-height: -webkit-fill-available; /* iOS Safari fix */
     }
     
     #root {
       min-height: 100vh;
+      min-height: -webkit-fill-available; /* iOS Safari fix */
     }
 
     /* Smooth transition for Vanta background */
@@ -172,6 +176,8 @@
       right: 0;
       bottom: 0;
       z-index: 0;
+      min-height: 100vh;
+      min-height: -webkit-fill-available; /* iOS Safari fix */
     }
 
     #vanta-bg.loaded {
@@ -182,6 +188,8 @@
     #root > div {
       position: relative;
       z-index: 1;
+      min-height: 100vh;
+      min-height: -webkit-fill-available; /* iOS Safari fix */
     }
   </style>
 </head>
