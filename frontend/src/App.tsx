@@ -57,8 +57,8 @@ function HowItWorksGrid() {
     },
     {
       icon: <SiPastebin fontSize={40} className="fill-secondary-400" />,
-      title: "Text Extraction",
-      description: "Text extraction + section/skill/keyword detection",
+      title: "Upload Resume",
+      description: "The system scans the resume and job description to assess skill & keyword alignment.",
       bgColor: "bg-secondary-100",
     },
     {
