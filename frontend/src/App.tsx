@@ -613,9 +613,9 @@ function App() {
                     </div>
 
                     {/* Progress Bars */}
-                    <div className="bg-white rounded-xl p-6 shadow-lg space-y-4">
+                    <div className="bg-white rounded-xl p-3 sm:p-6 shadow-lg space-y-3 sm:space-y-4">
                       <div>
-                        <div className="flex justify-between text-sm mb-2">
+                        <div className="flex justify-between text-xs sm:text-sm mb-2">
                           <span className="font-medium text-gray-700">Skills Match</span>
                           <span className="text-gray-500">95%</span>
                         </div>
@@ -624,7 +624,7 @@ function App() {
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-between text-sm mb-2">
+                        <div className="flex justify-between text-xs sm:text-sm mb-2">
                           <span className="font-medium text-gray-700">Keywords</span>
                           <span className="text-gray-500">87%</span>
                         </div>
@@ -633,7 +633,7 @@ function App() {
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-between text-sm mb-2">
+                        <div className="flex justify-between text-xs sm:text-sm mb-2">
                           <span className="font-medium text-gray-700">Formatting</span>
                           <span className="text-gray-500">92%</span>
                         </div>
@@ -644,9 +644,9 @@ function App() {
                     </div>
 
                     {/* Icons */}
-                    <div className="flex justify-center gap-6 pt-2">
+                    <div className="flex justify-center gap-4 sm:gap-6 pt-2">
                       <div className="flex flex-col items-center">
-                        <div className="bg-blue-100 rounded-full p-3">
+                        <div className="bg-blue-100 rounded-full p-2 sm:p-3">
                           <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
