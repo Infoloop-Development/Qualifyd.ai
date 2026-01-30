@@ -28,8 +28,8 @@ function ScoreCard({ label, value }: { label: string; value?: number }) {
   };
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 lg:p-8 shadow-sm transition-all hover:shadow-lg hover:border-blue-200">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 opacity-0 transition-opacity group-hover:opacity-100" />
+    <div className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 lg:p-8 shadow-sm transition-all hover:shadow-lg hover:border-primary-200">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-50/50 to-secondary-50/50 opacity-0 transition-opacity group-hover:opacity-100" />
       <p className="relative text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-gray-600">{label}</p>
       <p className={`relative mt-2 sm:mt-3 text-4xl sm:text-5xl font-bold ${getScoreColor(value)}`}>
         {value ?? "—"}
@@ -50,16 +50,16 @@ function ScoreCard({ label, value }: { label: string; value?: number }) {
 function HowItWorksGrid() {
   const steps = [
     {
-      icon: <MdOutlineEditNote fontSize={40} className="fill-blue-700" />,
+      icon: <MdOutlineEditNote fontSize={40} className="fill-primary-500" />,
       title: "Paste JD",
       description: "Paste the job description and upload PDF/DOCX resume",
-      bgColor: "bg-blue-100",
+      bgColor: "bg-primary-100",
     },
     {
       icon: <SiPastebin fontSize={40} className="fill-purple-700" />,
       title: "Text Extraction",
       description: "Text extraction + section/skill/keyword detection",
-      bgColor: "bg-purple-100",
+      bgColor: "bg-secondary-100",
     },
     {
       icon: <GoGoal fontSize={40} className="fill-green-700" />,
@@ -115,27 +115,27 @@ function HowItWorksGrid() {
 function WhatYouGetGrid() {
   const items = [
     {
-      icon: <FaPen size={30} className="fill-blue-700" />, text:
+      icon: <FaPen size={30} className="fill-primary-500" />, text:
         "Fit / ATS / Writing scores",
     },
     {
-      icon: <GrDocumentMissing size={30} className="stroke-blue-700" />, text:
+      icon: <GrDocumentMissing size={30} className="stroke-primary-500" />, text:
         "Missing skills and keywords to add",
     },
     {
-      icon: <GoProjectSymlink size={30} className="fill-blue-700" />, text:
+      icon: <GoProjectSymlink size={30} className="fill-primary-500" />, text:
         "Missing sections (Summary, Skills, Projects, Education)",
     },
     {
-      icon: <SiVictoriametrics size={30} className="fill-blue-700" />, text:
+      icon: <SiVictoriametrics size={30} className="fill-primary-500" />, text:
         "Bullet/style issues (no metrics, weak verbs, passive voice, too long)",
     },
     {
-      icon: <MdEmojiFlags size={30} className="fill-blue-700" />, text:
+      icon: <MdEmojiFlags size={30} className="fill-primary-500" />, text:
         "Formatting flags (columns/images if detected)",
     },
     {
-      icon: <GiShintoShrineMirror size={30} className="fill-blue-700" />, text:
+      icon: <GiShintoShrineMirror size={30} className="fill-primary-500" />, text:
         "Summary hints and writing suggestions"
     }
   ];
@@ -146,7 +146,7 @@ function WhatYouGetGrid() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {items.map((item, idx) => (
           <div key={idx} className="flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 p-4 sm:p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all">
-            <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-blue-100">
+            <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-primary-100">
               <div className="text-2xl sm:text-3xl">
                 {item.icon}
               </div>
@@ -206,7 +206,7 @@ function HowToUseGrid() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-left w-full lg:text-left mb-4 sm:mb-6">How to use</h2>
           {steps.map((step, idx) => (
             <div key={idx} className="flex items-start text-left gap-3 sm:gap-4 mt-3 sm:mt-4 w-full">
-              <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-blue-100 text-base sm:text-lg font-bold text-blue-600 flex-shrink-0">
+              <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary-100 text-base sm:text-lg font-bold text-primary-500 flex-shrink-0">
                 {idx + 1}
               </div>
               <div className="flex-1 min-w-0">
@@ -457,7 +457,7 @@ function App() {
                   <>
                     <button
                       type="button"
-                      className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-primary-500 text-sm font-semibold text-white shadow-sm hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                       onClick={() => setShowProfileMenu((v) => !v)}
                     >
                       {currentUser.fullName
@@ -498,7 +498,7 @@ function App() {
                 ) : (
                   <button
                     type="button"
-                    className="rounded-lg bg-blue-600 px-4 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
+                    className="rounded-lg bg-primary-500 px-4 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-semibold text-white shadow-lg transition-all hover:bg-primary-600 hover:shadow-xl"
                     onClick={() => {
                       setAuthMode("login");
                       setShowAuthModal(true);
@@ -531,7 +531,7 @@ function App() {
                 <div className="pt-2">
                   <button
                     onClick={handleScrollToUpload}
-                    className="rounded-lg bg-blue-600 px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl w-full sm:w-auto"
+                    className="rounded-lg bg-primary-500 px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-600 hover:shadow-xl w-full sm:w-auto"
                   >
                     Scan Your Resume For Free
                   </button>
@@ -587,11 +587,11 @@ function App() {
 
               {/* Right Column - Visual Element */}
               <div className="relative order-2 lg:order-2 mt-8 lg:mt-0 max-w-md mx-auto lg:max-w-none lg:mx-0">
-                <div className="relative rounded-2xl bg-gradient-to-br from-blue-50 via-purple-50 to-emerald-50 p-3 sm:p-6 lg:p-8 shadow-2xl scale-90 sm:scale-100">
+                <div className="relative rounded-2xl bg-gradient-to-br from-primary-50 via-secondary-50 to-emerald-50 p-3 sm:p-6 lg:p-8 shadow-2xl scale-90 sm:scale-100">
                   {/* Animated Background Shapes */}
                   <div className="absolute inset-0 overflow-hidden rounded-2xl">
-                    <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-blue-200 opacity-20 blur-3xl"></div>
-                    <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-purple-200 opacity-20 blur-3xl"></div>
+                    <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-primary-200 opacity-20 blur-3xl"></div>
+                    <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-secondary-200 opacity-20 blur-3xl"></div>
                   </div>
 
                   {/* Main Visual Content */}
@@ -603,11 +603,11 @@ function App() {
                         <div className="text-xs text-gray-600 mt-1">Fit Score</div>
                       </div>
                       <div className="bg-white rounded-xl p-2 sm:p-4 shadow-lg text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-blue-600">88</div>
+                        <div className="text-2xl sm:text-3xl font-bold text-primary-500">88</div>
                         <div className="text-xs text-gray-600 mt-1">ATS Score</div>
                       </div>
                       <div className="bg-white rounded-xl p-2 sm:p-4 shadow-lg text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-purple-600">85</div>
+                        <div className="text-2xl sm:text-3xl font-bold text-secondary-400">85</div>
                         <div className="text-xs text-gray-600 mt-1">Writing</div>
                       </div>
                     </div>
@@ -620,7 +620,7 @@ function App() {
                           <span className="text-gray-500">95%</span>
                         </div>
                         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full" style={{ width: '95%' }}></div>
+                          <div className="h-full bg-gradient-to-r from-primary-500 to-emerald-500 rounded-full" style={{ width: '95%' }}></div>
                         </div>
                       </div>
                       <div>
@@ -629,7 +629,7 @@ function App() {
                           <span className="text-gray-500">87%</span>
                         </div>
                         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full" style={{ width: '87%' }}></div>
+                          <div className="h-full bg-gradient-to-r from-secondary-400 to-primary-500 rounded-full" style={{ width: '87%' }}></div>
                         </div>
                       </div>
                       <div>
@@ -638,7 +638,7 @@ function App() {
                           <span className="text-gray-500">92%</span>
                         </div>
                         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full" style={{ width: '92%' }}></div>
+                          <div className="h-full bg-gradient-to-r from-emerald-500 to-primary-500 rounded-full" style={{ width: '92%' }}></div>
                         </div>
                       </div>
                     </div>
@@ -646,16 +646,16 @@ function App() {
                     {/* Icons */}
                     <div className="flex justify-center gap-4 sm:gap-6 pt-2">
                       <div className="flex flex-col items-center">
-                        <div className="bg-blue-100 rounded-full p-2 sm:p-3">
-                          <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="bg-primary-100 rounded-full p-2 sm:p-3">
+                          <svg className="h-6 w-6 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
                         </div>
                         <span className="text-xs text-gray-600 mt-2">Resume</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <div className="bg-purple-100 rounded-full p-3">
-                          <svg className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="bg-secondary-100 rounded-full p-3">
+                          <svg className="h-6 w-6 text-secondary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                           </svg>
                         </div>
@@ -695,7 +695,7 @@ function App() {
                 Job Description
               </label>
               <textarea
-                className="min-h-[200px] sm:h-[244px] w-full resize-none rounded-xl border border-gray-300 bg-white p-4 sm:p-5 text-sm text-gray-900 placeholder-gray-400 shadow-sm transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                className="min-h-[200px] sm:h-[244px] w-full resize-none rounded-xl border border-gray-300 bg-white p-4 sm:p-5 text-sm text-gray-900 placeholder-gray-400 shadow-sm transition-all focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
                 placeholder="Paste the complete job description here..."
                 value={jdText}
                 onChange={(e) => setJdText(e.target.value)}
@@ -705,8 +705,8 @@ function App() {
               <label className="mb-2 sm:mb-3 block text-base sm:text-lg font-semibold text-gray-900">
                 Upload Resume
               </label>
-              <div className="group relative overflow-hidden rounded-xl bg-blue-700 text-center transition-all">
-                <div className="m-2 sm:m-3 rounded-xl border-2 border-dashed border-gray-300 bg-blue-800 p-6 sm:p-8 lg:p-10">
+              <div className="group relative overflow-hidden rounded-xl bg-primary-600 text-center transition-all">
+                <div className="m-2 sm:m-3 rounded-xl border-2 border-dashed border-gray-300 bg-primary-700 p-6 sm:p-8 lg:p-10">
                   <input
                     type="file"
                     accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -753,7 +753,7 @@ function App() {
                 </div>
               </div>
               <button
-                className="mt-4 sm:mt-5 w-full rounded-xl bg-blue-600 px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl disabled:cursor-not-allowed disabled:shadow-none"
+                className="mt-4 sm:mt-5 w-full rounded-xl bg-primary-500 px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-600 hover:shadow-xl disabled:cursor-not-allowed disabled:shadow-none"
                 onClick={handleAnalyze}
                 disabled={!jdText || !file || isAnalyzing}
               >
@@ -787,7 +787,7 @@ function App() {
           </div>
 
           {/* <button
-            className="w-full rounded-xl bg-blue-600 px-6 py-4 font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl disabled:cursor-not-allowed disabled:bg-gray-400 disabled:shadow-none"
+            className="w-full rounded-xl bg-primary-500 px-6 py-4 font-semibold text-white shadow-lg transition-all hover:bg-primary-600 hover:shadow-xl disabled:cursor-not-allowed disabled:bg-gray-400 disabled:shadow-none"
             onClick={handleAnalyze}
             disabled={!jdText || !file || isAnalyzing}
           >
@@ -803,8 +803,8 @@ function App() {
             <p className="text-xs text-gray-600">Job ID: {jobId}</p>
           )}
           {isAnalyzing && (
-            <div className="flex items-center gap-2 text-sm text-blue-600">
-              <div className="h-4 w-4 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+            <div className="flex items-center gap-2 text-sm text-primary-500">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-500 border-t-transparent" />
               Processing your resume...
             </div>
           )}
@@ -934,7 +934,7 @@ function App() {
                   </div>
 
                   {suggestions?.summaryHint && (
-                    <div className="rounded-lg bg-blue-50 p-3 sm:p-4 text-xs sm:text-sm border border-gray-200">
+                    <div className="rounded-lg bg-primary-50 p-3 sm:p-4 text-xs sm:text-sm border border-gray-200">
                       <span className="font-semibold text-gray-900">💡 Summary Tip: </span>
                       <span className="text-gray-700">{suggestions.summaryHint}</span>
                     </div>
@@ -1043,7 +1043,7 @@ function App() {
 
                 <button
                   type="button"
-                  className="mt-2 w-full rounded-lg bg-blue-600 px-4 py-3 sm:py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400 min-h-[44px]"
+                  className="mt-2 w-full rounded-lg bg-primary-500 px-4 py-3 sm:py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-600 disabled:cursor-not-allowed disabled:bg-gray-400 min-h-[44px]"
                   disabled={authLoading}
                   onClick={authMode === "signup" ? handleSubmitSignup : handleSubmitLogin}
                 >
@@ -1196,10 +1196,10 @@ function App() {
                           )}
 
                           <div className="flex flex-wrap gap-2 text-xs">
-                            <span className="rounded-full bg-blue-50 px-2.5 sm:px-3 py-1 font-semibold text-blue-700">
+                            <span className="rounded-full bg-primary-50 px-2.5 sm:px-3 py-1 font-semibold text-primary-600">
                               Fit: {a.scores.fit}
                             </span>
-                            <span className="rounded-full bg-purple-50 px-2.5 sm:px-3 py-1 font-semibold text-purple-700">
+                            <span className="rounded-full bg-secondary-50 px-2.5 sm:px-3 py-1 font-semibold text-secondary-400">
                               ATS: {a.scores.ats}
                             </span>
                             <span className="rounded-full bg-emerald-50 px-2.5 sm:px-3 py-1 font-semibold text-emerald-700">
@@ -1292,14 +1292,14 @@ function App() {
                 <span className="text-gray-700">Rule-based scoring and analysis</span>
               </div>
               <p className="mt-2 text-[10px] sm:text-xs text-gray-600 text-center md:text-left">
-                Made with love for the community by <a href="https://infoloop.co/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-medium transition-colors">Infoloop Technologies LLP</a>.
+                Made with love for the community by <a href="https://infoloop.co/" target="_blank" rel="noopener noreferrer" className="text-primary-500 hover:text-primary-600 font-medium transition-colors">Infoloop Technologies LLP</a>.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-700">
-              <a href="/privacy.html" className="transition-colors hover:text-blue-600 font-medium min-h-[44px] flex items-center">Privacy</a>
-              <a href="/terms.html" className="transition-colors hover:text-blue-600 font-medium min-h-[44px] flex items-center">Terms</a>
-              <a href="mailto:support@infoloop.co" className="transition-colors hover:text-blue-600 font-medium min-h-[44px] flex items-center">Support</a>
-              <a href="/sitemap.xml" className="transition-colors hover:text-blue-600 font-medium min-h-[44px] flex items-center">Sitemap</a>
+              <a href="/privacy.html" className="transition-colors hover:text-primary-500 font-medium min-h-[44px] flex items-center">Privacy</a>
+              <a href="/terms.html" className="transition-colors hover:text-primary-500 font-medium min-h-[44px] flex items-center">Terms</a>
+              <a href="mailto:support@infoloop.co" className="transition-colors hover:text-primary-500 font-medium min-h-[44px] flex items-center">Support</a>
+              <a href="/sitemap.xml" className="transition-colors hover:text-primary-500 font-medium min-h-[44px] flex items-center">Sitemap</a>
             </div>
           </div>
         </div>
