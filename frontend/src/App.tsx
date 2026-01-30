@@ -1278,10 +1278,10 @@ function App() {
               </div>
               <button
                 type="button"
-                className="rounded-full border border-gray-200 bg-white px-3 py-2 sm:px-4 text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50 min-h-[44px]"
+                className="rounded-full border border-gray-200 bg-white px-3 py-2 sm:px-4 text-xs sm:text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 min-h-[44px] whitespace-nowrap"
                 onClick={() => setShowProfile(false)}
               >
-                ← Back to analyzer
+                <span className="hidden sm:inline">← </span>Back to analyzer
               </button>
             </div>
 
@@ -1345,7 +1345,7 @@ function App() {
                           {a.resumeOriginalName && (
                             <button
                               type="button"
-                              className="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 min-h-[44px] flex items-center break-all"
+                              className="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 min-h-[44px] flex items-center break-words"
                               onClick={async () => {
                                 try {
                                   const blob = await downloadResumeForAnalysis(a.id);
@@ -1362,7 +1362,10 @@ function App() {
                                 }
                               }}
                             >
-                              Download resume ({a.resumeOriginalName.length > 20 ? a.resumeOriginalName.substring(0, 20) + '...' : a.resumeOriginalName})
+                              <span className="whitespace-normal">Download resume</span>
+                              <span className="block sm:inline sm:ml-1 text-[10px] sm:text-xs opacity-75">
+                                ({a.resumeOriginalName.length > 15 ? a.resumeOriginalName.substring(0, 15) + '...' : a.resumeOriginalName})
+                              </span>
                             </button>
                           )}
 
