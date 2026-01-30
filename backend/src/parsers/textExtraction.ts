@@ -6,8 +6,17 @@ import { logger } from "../utils/logger";
 const pdfParseLib = require("pdf-parse");
 
 // Extract the actual function - pdf-parse v2.4.5 exports PDFParse property
-const pdfParse: (buffer: Buffer) => Promise<{ text: string }> = 
-  pdfParseLib.PDFParse || (typeof pdfParseLib === "function" ? pdfParseLib : pdfParseLib.default);
+// Handle all possible export formats
+let pdfParse: (buffer: Buffer) => Promise<{ text: string }>;
+if (typeof pdfParseLib === "function") {
+  pdfParse = pdfParseLib;
+} else if (typeof pdfParseLib.PDFParse === "function") {
+  pdfParse = pdfParseLib.PDFParse;
+} else if (typeof pdfParseLib.default === "function") {
+  pdfParse = pdfParseLib.default;
+} else {
+  throw new Error("pdf-parse module does not export a function");
+}
 
 export async function extractText(file: Express.Multer.File): Promise<string> {
   const mime = file.mimetype || "";
