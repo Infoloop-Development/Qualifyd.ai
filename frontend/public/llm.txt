@@ -26,7 +26,7 @@ Technology:
 - Privacy: Rule-based by default, optional AI features
 
 # Contact
-Contact: Available through the website contact form
+Contact: support@infoloop.co
 
 # Last Updated
 Last Updated: 2024-01-30

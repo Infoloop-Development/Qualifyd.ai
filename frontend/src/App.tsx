@@ -1296,9 +1296,9 @@ function App() {
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-700">
-              <a href="#" className="transition-colors hover:text-blue-600 font-medium">Privacy</a>
-              <a href="#" className="transition-colors hover:text-blue-600 font-medium">Terms</a>
-              <a href="#" className="transition-colors hover:text-blue-600 font-medium">Support</a>
+              <a href="/privacy.html" className="transition-colors hover:text-blue-600 font-medium">Privacy</a>
+              <a href="/terms.html" className="transition-colors hover:text-blue-600 font-medium">Terms</a>
+              <a href="mailto:support@infoloop.co" className="transition-colors hover:text-blue-600 font-medium">Support</a>
               <a href="/sitemap.xml" className="transition-colors hover:text-blue-600 font-medium">Sitemap</a>
             </div>
           </div>
