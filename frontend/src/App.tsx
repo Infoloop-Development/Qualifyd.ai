@@ -27,14 +27,14 @@ function ScoreCard({ label, value }: { label: string; value?: number }) {
   };
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-lg hover:border-blue-200">
+    <div className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 lg:p-8 shadow-sm transition-all hover:shadow-lg hover:border-blue-200">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 opacity-0 transition-opacity group-hover:opacity-100" />
-      <p className="relative text-xs font-semibold uppercase tracking-wider text-gray-600">{label}</p>
-      <p className={`relative mt-3 text-5xl font-bold ${getScoreColor(value)}`}>
+      <p className="relative text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-gray-600">{label}</p>
+      <p className={`relative mt-2 sm:mt-3 text-4xl sm:text-5xl font-bold ${getScoreColor(value)}`}>
         {value ?? "—"}
       </p>
       {value && (
-        <div className="relative mt-4 h-2 overflow-hidden rounded-full bg-gray-200">
+        <div className="relative mt-3 sm:mt-4 h-2 overflow-hidden rounded-full bg-gray-200">
           <div
             className={`h-full rounded-full transition-all duration-1000 ${value >= 80 ? "bg-emerald-500" : value >= 60 ? "bg-amber-500" : "bg-red-500"
               }`}
@@ -77,28 +77,30 @@ function HowItWorksGrid() {
 
 
   return (
-    <section className="space-y-8">
-      <h2 className="text-3xl font-bold text-center text-gray-900">
+    <section className="space-y-6 sm:space-y-8">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900">
         How it works
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {steps.map((step, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-center text-center space-y-4"
+            className="flex flex-col items-center text-center space-y-3 sm:space-y-4"
           >
             <div
-              className={`flex h-20 w-20 items-center justify-center rounded-full ${step.bgColor}`}
+              className={`flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full ${step.bgColor}`}
             >
-              {step.icon}
+              <div className="text-3xl sm:text-4xl">
+                {step.icon}
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <h3 className="text-lg font-medium text-gray-900">
+            <div className="space-y-1.5 sm:space-y-2">
+              <h3 className="text-base sm:text-lg font-medium text-gray-900">
                 {step.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed px-2">
                 {step.description}
               </p>
             </div>
@@ -138,15 +140,17 @@ function WhatYouGetGrid() {
   ];
 
   return (
-    <section className="space-y-8">
-      <h2 className="text-3xl font-bold text-gray-900 text-center">What you get</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section className="space-y-6 sm:space-y-8">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center">What you get</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {items.map((item, idx) => (
-          <div key={idx} className="flex flex-col items-center justify-center text-center space-y-3 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-blue-100 text-5xl">
-              {item.icon}
+          <div key={idx} className="flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 p-4 sm:p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all">
+            <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-blue-100">
+              <div className="text-2xl sm:text-3xl">
+                {item.icon}
+              </div>
             </div>
-            <p className="text-lg text-gray-700 leading-relaxed">{item.text}</p>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed">{item.text}</p>
           </div>
         ))}
       </div>
@@ -193,19 +197,19 @@ function HowToUseGrid() {
 
   return (
     <section className="">
-      <div className="flex justify-evenly items-center gap-12 flex-wrap">
-        <div className="w-[250px] lg:w-[450px]">
+      <div className="flex flex-col lg:flex-row justify-evenly items-center gap-8 sm:gap-10 lg:gap-12">
+        <div className="w-full max-w-[250px] sm:max-w-[300px] lg:w-[450px] order-2 lg:order-1">
           <img src={pdfImage} className="w-full h-full" alt="Resume analysis illustration" />
         </div>
-        <div className="flex flex-col items-start">
-          <h2 className="text-3xl font-bold text-gray-900 text-center">How to use</h2>
+        <div className="flex flex-col items-start lg:items-start w-full lg:w-auto order-1 lg:order-2">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-left w-full lg:text-left mb-4 sm:mb-6">How to use</h2>
           {steps.map((step, idx) => (
-            <div key={idx} className="flex items-center text-center gap-4 mt-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-600">
+            <div key={idx} className="flex items-start text-left gap-3 sm:gap-4 mt-3 sm:mt-4 w-full">
+              <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-blue-100 text-base sm:text-lg font-bold text-blue-600 flex-shrink-0">
                 {idx + 1}
               </div>
-              <div>
-                <p className="text-sm lg:text-lg text-gray-900 font-medium leading-relaxed text-start">{step}</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm sm:text-base lg:text-lg text-gray-900 font-medium leading-relaxed text-left">{step}</p>
               </div>
             </div>
           ))}
@@ -398,33 +402,33 @@ function App() {
     <div className="min-h-screen bg-white text-gray-900">
       {/* Header */}
       <header className={`sticky top-0 border-b border-gray-200 bg-white shadow-sm ${showAuthModal ? 'z-30' : 'z-50'}`}>
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between flex-wrap gap-5">
+        <div className="mx-auto max-w-7xl px-3 py-3 sm:px-4 sm:py-4 lg:px-8 lg:py-5">
+          <div className="flex items-center justify-between flex-wrap gap-3 sm:gap-5">
             <button
               type="button"
               onClick={handleGoHome}
-              className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+              className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity cursor-pointer"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 shadow-lg">
-                <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-blue-600 shadow-lg">
+                <svg className="h-5 w-5 sm:h-6 sm:w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <h1 className="text-2xl font-bold text-gray-900">Qualifyd.ai</h1>
-                  <span className="rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold text-gray-700">BETA</span>
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Qualifyd.ai</h1>
+                  <span className="rounded-full bg-gray-200 px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold text-gray-700">BETA</span>
                 </div>
-                <p className="text-xs text-gray-600">Resume optimization & ATS analysis</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 hidden xs:block">Resume optimization & ATS analysis</p>
               </div>
             </button>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <div className="relative">
                 {currentUser ? (
                   <>
                     <button
                       type="button"
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                       onClick={() => setShowProfileMenu((v) => !v)}
                     >
                       {currentUser.fullName
@@ -435,10 +439,10 @@ function App() {
                         .join("") || "U"}
                     </button>
                     {showProfileMenu && (
-                      <div className="absolute right-0 mt-2 w-40 rounded-xl border border-gray-200 bg-white py-1 text-sm shadow-lg">
+                      <div className="absolute right-0 mt-2 w-40 rounded-xl border border-gray-200 bg-white py-1 text-sm shadow-lg z-50">
                         <button
                           type="button"
-                          className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50"
+                          className="block w-full px-4 py-2.5 text-left text-gray-700 hover:bg-gray-50"
                           onClick={() => {
                             setShowProfile(true);
                             setShowProfileMenu(false);
@@ -448,7 +452,7 @@ function App() {
                         </button>
                         <button
                           type="button"
-                          className="block w-full px-4 py-2 text-left text-red-600 hover:bg-red-50"
+                          className="block w-full px-4 py-2.5 text-left text-red-600 hover:bg-red-50"
                           onClick={() => {
                             setCurrentUser(null);
                             localStorage.removeItem("ra_current_user");
@@ -465,7 +469,7 @@ function App() {
                 ) : (
                   <button
                     type="button"
-                    className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
+                    className="rounded-lg bg-blue-600 px-4 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
                     onClick={() => {
                       setAuthMode("login");
                       setShowAuthModal(true);
@@ -480,42 +484,42 @@ function App() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-10 lg:px-8 lg:py-12">
         {!showProfile && (
         <>
         {/* Hero Section */}
-        <section className="flex min-h-[85vh] items-center py-12">
-          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="flex min-h-[70vh] sm:min-h-[80vh] lg:min-h-[85vh] items-center py-8 sm:py-10 lg:py-12">
+          <div className="mx-auto w-full max-w-7xl px-3 sm:px-4 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               {/* Left Column - Content */}
-              <div className="space-y-6 text-left">
-                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-left">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900">
                   Optimize your resume to get more interviews
                 </h1>
-                <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
                   Qualifyd.ai helps you optimize your resume for any job, highlighting the key experience and skills recruiters need to see.
                 </p>
                 <div className="pt-2">
                   <button
                     onClick={handleScrollToUpload}
-                    className="rounded-lg bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
+                    className="rounded-lg bg-blue-600 px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl w-full sm:w-auto"
                   >
                     Scan Your Resume For Free
                   </button>
                 </div>
-                <div className="pt-4">
-                  <p className="text-sm font-medium text-gray-500 mb-4">Qualifyd.ai users have been hired by:</p>
-                  <div className="flex flex-wrap items-center gap-8 opacity-60">
+                <div className="pt-3 sm:pt-4">
+                  <p className="text-xs sm:text-sm font-medium text-gray-500 mb-3 sm:mb-4">Qualifyd.ai users have been hired by:</p>
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 opacity-60">
                     {/* Facebook/Meta */}
-                    <div className="text-base font-semibold text-gray-600 tracking-wide">Meta</div>
+                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Meta</div>
                     {/* Apple */}
-                    <div className="text-base font-semibold text-gray-600 tracking-wide">Apple</div>
+                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Apple</div>
                     {/* Amazon */}
-                    <div className="text-base font-semibold text-gray-600 tracking-wide">Amazon</div>
+                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Amazon</div>
                     {/* Netflix */}
-                    <div className="text-base font-semibold text-gray-600 tracking-wide">Netflix</div>
+                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Netflix</div>
                     {/* Google */}
-                    <div className="text-base font-semibold text-gray-600 tracking-wide">Google</div>
+                    <div className="text-sm sm:text-base font-semibold text-gray-600 tracking-wide">Google</div>
                   </div>
                 </div>
               </div>
@@ -613,30 +617,30 @@ function App() {
         </section>
 
         {/* How it works Section */}
-        <section className="mb-16 pt-12">
+        <section className="mb-10 sm:mb-12 lg:mb-16 pt-8 sm:pt-10 lg:pt-12">
           <HowItWorksGrid />
         </section>
 
         {/* Upload Section */}
-        <div id="upload-section" className="mb-12 space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div id="upload-section" className="mb-8 sm:mb-12 space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
             <div className="lg:col-span-6">
-              <label className="mb-3 block text-lg font-semibold text-gray-900">
+              <label className="mb-2 sm:mb-3 block text-base sm:text-lg font-semibold text-gray-900">
                 Job Description
               </label>
               <textarea
-                className="h-[244px] w-full resize-none rounded-xl border border-gray-300 bg-white p-5 text-sm text-gray-900 placeholder-gray-400 shadow-sm transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                className="min-h-[200px] sm:h-[244px] w-full resize-none rounded-xl border border-gray-300 bg-white p-4 sm:p-5 text-sm text-gray-900 placeholder-gray-400 shadow-sm transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 placeholder="Paste the complete job description here..."
                 value={jdText}
                 onChange={(e) => setJdText(e.target.value)}
               />
             </div>
             <div className="lg:col-span-6">
-              <label className="mb-3 block text-lg font-semibold text-gray-900">
+              <label className="mb-2 sm:mb-3 block text-base sm:text-lg font-semibold text-gray-900">
                 Upload Resume
               </label>
               <div className="group relative overflow-hidden rounded-xl bg-blue-700 text-center transition-all">
-                <div className="m-3 rounded-xl border-2 border-dashed border-gray-300 bg-blue-800 p-10">
+                <div className="m-2 sm:m-3 rounded-xl border-2 border-dashed border-gray-300 bg-blue-800 p-6 sm:p-8 lg:p-10">
                   <input
                     type="file"
                     accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -648,9 +652,9 @@ function App() {
                   />
 
                   <div className="pointer-events-none">
-                    <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gray-200 transition-all group-hover:bg-gray-300">
+                    <div className="mx-auto mb-3 sm:mb-4 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gray-200 transition-all group-hover:bg-gray-300">
                       <svg
-                        className="h-10 w-10 text-gray-600 transition-all group-hover:text-gray-700"
+                        className="h-8 w-8 sm:h-10 sm:w-10 text-gray-600 transition-all group-hover:text-gray-700"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -665,16 +669,16 @@ function App() {
                     </div>
 
                     {file ? (
-                      <div className="text-sm">
-                        <p className="font-semibold text-gray-100">{file.name}</p>
-                        <p className="mt-1 text-xs text-gray-200">Click to change</p>
+                      <div className="text-xs sm:text-sm">
+                        <p className="font-semibold text-gray-100 break-words px-2">{file.name}</p>
+                        <p className="mt-1 text-[10px] sm:text-xs text-gray-200">Click to change</p>
                       </div>
                     ) : (
-                      <div className="text-sm">
+                      <div className="text-xs sm:text-sm">
                         <p className="font-semibold text-gray-100">
                           Drop your file here
                         </p>
-                        <p className="mt-1 text-xs text-gray-100">
+                        <p className="mt-1 text-[10px] sm:text-xs text-gray-100">
                           PDF or DOCX (max 5MB)
                         </p>
                       </div>
@@ -683,7 +687,7 @@ function App() {
                 </div>
               </div>
               <button
-                className="mt-5 w-full rounded-xl bg-blue-600 px-6 py-4 font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl disabled:cursor-not-allowed disabled:shadow-none"
+                className="mt-4 sm:mt-5 w-full rounded-xl bg-blue-600 px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl disabled:cursor-not-allowed disabled:shadow-none"
                 onClick={handleAnalyze}
                 disabled={!jdText || !file || isAnalyzing}
               >
@@ -693,22 +697,22 @@ function App() {
           </div>
 
           <div>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              <div className="col-span-6 flex flex-col gap-6">
-                <p className="font-medium text-sm lg:text-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+              <div className="lg:col-span-6 flex flex-col gap-4 sm:gap-6">
+                <p className="font-medium text-sm sm:text-base lg:text-lg">
                   Resume ↔ JD analyzer that parses both, scores Fit/ATS/Writing, and delivers
                   actionable, rule-based improvements.
                 </p>
               </div>
-              <div className="col-span-6">
-                <ul className="list-disc pl-5 space-y-2">
-                  <li className="text-sm lg:text-lg font-medium">
+              <div className="lg:col-span-6">
+                <ul className="list-disc pl-4 sm:pl-5 space-y-2">
+                  <li className="text-sm sm:text-base lg:text-lg font-medium">
                     Deterministic processing by default; fully transparent and explainable.
                   </li>
-                  <li className="text-sm lg:text-lg font-medium">
+                  <li className="text-sm sm:text-base lg:text-lg font-medium">
                     Rule-based scoring ensures consistent and reliable results.
                   </li>
-                  <li className="text-sm lg:text-lg font-medium">
+                  <li className="text-sm sm:text-base lg:text-lg font-medium">
                     Privacy-focused; your data stays secure and private.
                   </li>
                 </ul>
@@ -742,14 +746,14 @@ function App() {
           {hasResults && (
             <>
               <div
-                className={`border-t border-gray-200 pt-16 space-y-16 transition-all ${
+                className={`border-t border-gray-200 pt-8 sm:pt-12 lg:pt-16 space-y-10 sm:space-y-12 lg:space-y-16 transition-all ${
                   hasResults && !currentUser && showAuthModal ? "blur-sm pointer-events-none select-none" : ""
                 }`}
               >
                 {/* Scores */}
-                <div className="space-y-8">
-                  <h2 className="text-4xl font-bold text-gray-900">📈 Your Scores</h2>
-                  <div className="grid gap-6 md:grid-cols-3">
+                <div className="space-y-6 sm:space-y-8">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">📈 Your Scores</h2>
+                  <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                     <ScoreCard label="Fit Score" value={scores?.fit} />
                     <ScoreCard label="ATS Score" value={scores?.ats} />
                     <ScoreCard label="Writing Score" value={scores?.writing} />
@@ -757,73 +761,73 @@ function App() {
                 </div>
 
                 {/* Suggestions Grid */}
-                <div className="space-y-8">
-                  <h2 className="text-4xl font-bold text-gray-900">💡 Recommendations</h2>
-                  <div className="grid gap-6 lg:grid-cols-2">
-                    <div className="rounded-xl border border-gray-200 bg-white p-6">
-                      <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-gray-900">
-                        <span className="text-xl">🎯</span> Missing Skills
+                <div className="space-y-6 sm:space-y-8">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">💡 Recommendations</h2>
+                  <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
+                    <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
+                      <h3 className="mb-3 sm:mb-4 flex items-center gap-2 text-base sm:text-lg font-bold text-gray-900">
+                        <span className="text-lg sm:text-xl">🎯</span> Missing Skills
                       </h3>
                       <div className="space-y-2">
                         {missingSkills.length ? (
                           missingSkills.map((s: string) => (
-                            <div key={s} className="rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-700 border border-gray-200">
+                            <div key={s} className="rounded-lg bg-gray-50 px-3 py-2 text-xs sm:text-sm text-gray-700 border border-gray-200 break-words">
                               {s}
                             </div>
                           ))
                         ) : (
-                          <p className="text-sm text-gray-600">✓ All key skills present</p>
+                          <p className="text-xs sm:text-sm text-gray-600">✓ All key skills present</p>
                         )}
                       </div>
                     </div>
 
-                    <div className="rounded-xl border border-gray-200 bg-white p-6">
-                      <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-gray-900">
-                        <span className="text-xl">🔑</span> Keywords to Add
+                    <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
+                      <h3 className="mb-3 sm:mb-4 flex items-center gap-2 text-base sm:text-lg font-bold text-gray-900">
+                        <span className="text-lg sm:text-xl">🔑</span> Keywords to Add
                       </h3>
                       <div className="space-y-2">
                         {keywordsToAdd.length ? (
                           keywordsToAdd.map((k: string) => (
-                            <div key={k} className="rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-700 border border-gray-200">
+                            <div key={k} className="rounded-lg bg-gray-50 px-3 py-2 text-xs sm:text-sm text-gray-700 border border-gray-200 break-words">
                               {k}
                             </div>
                           ))
                         ) : (
-                          <p className="text-sm text-gray-600">✓ Keywords optimized</p>
+                          <p className="text-xs sm:text-sm text-gray-600">✓ Keywords optimized</p>
                         )}
                       </div>
                     </div>
 
-                    <div className="rounded-xl border border-gray-200 bg-white p-6">
-                      <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-gray-900">
-                        <span className="text-xl">📑</span> Missing Sections
+                    <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
+                      <h3 className="mb-3 sm:mb-4 flex items-center gap-2 text-base sm:text-lg font-bold text-gray-900">
+                        <span className="text-lg sm:text-xl">📑</span> Missing Sections
                       </h3>
                       <div className="space-y-2">
                         {missingSections.length ? (
                           missingSections.map((s: string) => (
-                            <div key={s} className="rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-700 border border-gray-200">
+                            <div key={s} className="rounded-lg bg-gray-50 px-3 py-2 text-xs sm:text-sm text-gray-700 border border-gray-200 break-words">
                               {s}
                             </div>
                           ))
                         ) : (
-                          <p className="text-sm text-gray-600">✓ All sections complete</p>
+                          <p className="text-xs sm:text-sm text-gray-600">✓ All sections complete</p>
                         )}
                       </div>
                     </div>
 
-                    <div className="rounded-xl border border-gray-200 bg-white p-6">
-                      <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-gray-900">
-                        <span className="text-xl">⚠️</span> Format Issues
+                    <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
+                      <h3 className="mb-3 sm:mb-4 flex items-center gap-2 text-base sm:text-lg font-bold text-gray-900">
+                        <span className="text-lg sm:text-xl">⚠️</span> Format Issues
                       </h3>
                       <div className="space-y-2">
                         {formatFlags.length ? (
                           formatFlags.map((f: string, idx: number) => (
-                            <div key={idx} className="rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-700 border border-gray-200">
+                            <div key={idx} className="rounded-lg bg-gray-50 px-3 py-2 text-xs sm:text-sm text-gray-700 border border-gray-200 break-words">
                               {f}
                             </div>
                           ))
                         ) : (
-                          <p className="text-sm text-gray-600">✓ Format looks good</p>
+                          <p className="text-xs sm:text-sm text-gray-600">✓ Format looks good</p>
                         )}
                       </div>
                     </div>
@@ -831,40 +835,40 @@ function App() {
                 </div>
 
                 {/* Writing Improvements */}
-                <div className="rounded-xl border border-gray-200 bg-white p-6 space-y-6">
-                  <h3 className="flex items-center gap-2 text-lg font-bold text-gray-900">
-                    <span className="text-xl">📝</span> Writing Improvements
+                <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6 space-y-4 sm:space-y-6">
+                  <h3 className="flex items-center gap-2 text-base sm:text-lg font-bold text-gray-900">
+                    <span className="text-lg sm:text-xl">📝</span> Writing Improvements
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div className="space-y-2">
-                      <p className="text-sm font-semibold text-gray-900">Spelling checks</p>
+                      <p className="text-xs sm:text-sm font-semibold text-gray-900">Spelling checks</p>
                       {spellingIssues.length ? (
                         spellingIssues.map((s: string, idx: number) => (
-                          <div key={idx} className="rounded-lg bg-gray-50 px-4 py-3 text-sm text-gray-700 border border-gray-200">
+                          <div key={idx} className="rounded-lg bg-gray-50 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-gray-700 border border-gray-200 break-words">
                             {s}
                           </div>
                         ))
                       ) : (
-                        <p className="text-sm text-gray-600">✓ No obvious spelling issues detected</p>
+                        <p className="text-xs sm:text-sm text-gray-600">✓ No obvious spelling issues detected</p>
                       )}
                     </div>
 
                     <div className="space-y-2">
-                      <p className="text-sm font-semibold text-gray-900">Bullet structure & clarity</p>
+                      <p className="text-xs sm:text-sm font-semibold text-gray-900">Bullet structure & clarity</p>
                       {bulletIssues.length ? (
                         bulletIssues.map((b: string, idx: number) => (
-                          <div key={idx} className="rounded-lg bg-gray-50 px-4 py-3 text-sm text-gray-700 border border-gray-200">
+                          <div key={idx} className="rounded-lg bg-gray-50 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-gray-700 border border-gray-200 break-words">
                             {b}
                           </div>
                         ))
                       ) : (
-                        <p className="text-sm text-gray-600">✓ No structural writing issues detected</p>
+                        <p className="text-xs sm:text-sm text-gray-600">✓ No structural writing issues detected</p>
                       )}
                     </div>
                   </div>
 
                   {suggestions?.summaryHint && (
-                    <div className="rounded-lg bg-blue-50 p-4 text-sm border border-gray-200">
+                    <div className="rounded-lg bg-blue-50 p-3 sm:p-4 text-xs sm:text-sm border border-gray-200">
                       <span className="font-semibold text-gray-900">💡 Summary Tip: </span>
                       <span className="text-gray-700">{suggestions.summaryHint}</span>
                     </div>
@@ -875,8 +879,8 @@ function App() {
           )}
 
         {!currentUser && showAuthModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, width: '100vw', height: '100vh' }}>
-            <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, width: '100vw', height: '100vh' }}>
+            <div className="relative w-full max-w-md rounded-2xl bg-white p-4 sm:p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
               {/* Only show close button when there are NO results - if results exist, user MUST login */}
               {!hasResults && (
                 <button
@@ -890,10 +894,10 @@ function App() {
                   </svg>
                 </button>
               )}
-              <h2 className="mb-4 text-xl font-bold text-gray-900 text-center">
+              <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl font-bold text-gray-900 text-center">
                 {authMode === "signup" ? "Create your free account to view results" : "Log in to view your results"}
               </h2>
-              <p className="mb-6 text-sm text-gray-600 text-center">
+              <p className="mb-4 sm:mb-6 text-xs sm:text-sm text-gray-600 text-center">
                 Save your analysis and come back anytime. It takes less than a minute.
               </p>
 
@@ -973,7 +977,7 @@ function App() {
 
                 <button
                   type="button"
-                  className="mt-2 w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400"
+                  className="mt-2 w-full rounded-lg bg-blue-600 px-4 py-3 sm:py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400 min-h-[44px]"
                   disabled={authLoading}
                   onClick={authMode === "signup" ? handleSubmitSignup : handleSubmitLogin}
                 >
@@ -1029,32 +1033,32 @@ function App() {
         )}
 
         {showProfile && currentUser && (
-          <section className="space-y-8">
-            <div className="flex items-center justify-between">
+          <section className="space-y-6 sm:space-y-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900">Profile</h2>
-                <p className="text-sm text-gray-600 mt-1">View your account details and past analyses.</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Profile</h2>
+                <p className="text-xs sm:text-sm text-gray-600 mt-1">View your account details and past analyses.</p>
               </div>
               <button
                 type="button"
-                className="rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50"
+                className="rounded-full border border-gray-200 bg-white px-3 py-2 sm:px-4 text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50 min-h-[44px]"
                 onClick={() => setShowProfile(false)}
               >
                 ← Back to analyzer
               </button>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
-              <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-2">
+            <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-3">
+              <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-6 space-y-2">
                 <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">Account</p>
-                <p className="text-lg font-semibold text-gray-900">{currentUser.fullName}</p>
-                <p className="text-sm text-gray-600">{currentUser.email}</p>
+                <p className="text-base sm:text-lg font-semibold text-gray-900 break-words">{currentUser.fullName}</p>
+                <p className="text-xs sm:text-sm text-gray-600 break-words">{currentUser.email}</p>
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-bold text-gray-900">Saved analyses</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">Saved analyses</h3>
               </div>
 
               {analysesLoading && (
@@ -1067,30 +1071,30 @@ function App() {
                 <p className="text-sm text-gray-600">No analyses saved yet. Run an analysis to see it here.</p>
               )}
 
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {analyses.map((a) => (
                   <div key={a.id} className="rounded-2xl border border-gray-200 bg-white">
                     <button
                       type="button"
-                      className="flex w-full items-center justify-between px-4 py-3 text-left"
+                      className="flex w-full items-center justify-between px-3 sm:px-4 py-3 text-left min-h-[44px]"
                       onClick={() =>
                         setExpandedAnalysisId((prev) => (prev === a.id ? null : a.id))
                       }
                     >
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900">
+                      <div className="flex-1 min-w-0 pr-2">
+                        <p className="text-xs sm:text-sm font-semibold text-gray-900 break-words">
                           {a.jobTitle || "Analysis"}{" "}
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-[10px] sm:text-xs text-gray-500">
                           {new Date(a.createdAt).toLocaleString()}
                         </p>
                       </div>
-                      <span className="text-gray-400 text-xl">
+                      <span className="text-gray-400 text-lg sm:text-xl flex-shrink-0">
                         {expandedAnalysisId === a.id ? "−" : "+"}
                       </span>
                     </button>
                     {expandedAnalysisId === a.id && (
-                      <div className="border-t border-gray-200 px-4 py-4 space-y-4">
+                      <div className="border-t border-gray-200 px-3 sm:px-4 py-3 sm:py-4 space-y-3 sm:space-y-4">
                         <div className="space-y-1">
                           <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
                             Job description
@@ -1100,11 +1104,11 @@ function App() {
                           </div>
                         </div>
 
-                        <div className="flex flex-wrap items-center gap-3">
+                        <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-2 sm:gap-3">
                           {a.resumeOriginalName && (
                             <button
                               type="button"
-                              className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+                              className="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 min-h-[44px] flex items-center break-all"
                               onClick={async () => {
                                 try {
                                   const blob = await downloadResumeForAnalysis(a.id);
@@ -1121,18 +1125,18 @@ function App() {
                                 }
                               }}
                             >
-                              Download resume ({a.resumeOriginalName})
+                              Download resume ({a.resumeOriginalName.length > 20 ? a.resumeOriginalName.substring(0, 20) + '...' : a.resumeOriginalName})
                             </button>
                           )}
 
                           <div className="flex flex-wrap gap-2 text-xs">
-                            <span className="rounded-full bg-blue-50 px-3 py-1 font-semibold text-blue-700">
+                            <span className="rounded-full bg-blue-50 px-2.5 sm:px-3 py-1 font-semibold text-blue-700">
                               Fit: {a.scores.fit}
                             </span>
-                            <span className="rounded-full bg-purple-50 px-3 py-1 font-semibold text-purple-700">
+                            <span className="rounded-full bg-purple-50 px-2.5 sm:px-3 py-1 font-semibold text-purple-700">
                               ATS: {a.scores.ats}
                             </span>
-                            <span className="rounded-full bg-emerald-50 px-3 py-1 font-semibold text-emerald-700">
+                            <span className="rounded-full bg-emerald-50 px-2.5 sm:px-3 py-1 font-semibold text-emerald-700">
                               Writing: {a.scores.writing}
                             </span>
                           </div>
@@ -1199,7 +1203,7 @@ function App() {
         </section> */}
 
         {/* How to use Section */}
-        <section className="border-t border-gray-200 pt-16">
+        <section className="border-t border-gray-200 pt-8 sm:pt-12 lg:pt-16">
           <HowToUseGrid />
         </section>
 
@@ -1208,23 +1212,23 @@ function App() {
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+        <div className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-10 lg:px-8 lg:py-12">
+          <div className="flex flex-col items-center justify-between gap-4 sm:gap-6 md:flex-row">
             <div className="text-center md:text-left flex flex-col items-center md:items-start">
-              <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start text-sm">
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center md:justify-start text-xs sm:text-sm">
                 <span className="font-semibold text-gray-900">Qualifyd.ai</span>
                 <span className="text-gray-400">|</span>
                 <span className="text-gray-700">Rule-based scoring and analysis</span>
               </div>
-              <p className="mt-2 text-xs text-gray-600">
+              <p className="mt-2 text-[10px] sm:text-xs text-gray-600 text-center md:text-left">
                 Made with love for the community by <a href="https://infoloop.co/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-medium transition-colors">Infoloop Technologies LLP</a>.
               </p>
             </div>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-700">
-              <a href="/privacy.html" className="transition-colors hover:text-blue-600 font-medium">Privacy</a>
-              <a href="/terms.html" className="transition-colors hover:text-blue-600 font-medium">Terms</a>
-              <a href="mailto:support@infoloop.co" className="transition-colors hover:text-blue-600 font-medium">Support</a>
-              <a href="/sitemap.xml" className="transition-colors hover:text-blue-600 font-medium">Sitemap</a>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-700">
+              <a href="/privacy.html" className="transition-colors hover:text-blue-600 font-medium min-h-[44px] flex items-center">Privacy</a>
+              <a href="/terms.html" className="transition-colors hover:text-blue-600 font-medium min-h-[44px] flex items-center">Terms</a>
+              <a href="mailto:support@infoloop.co" className="transition-colors hover:text-blue-600 font-medium min-h-[44px] flex items-center">Support</a>
+              <a href="/sitemap.xml" className="transition-colors hover:text-blue-600 font-medium min-h-[44px] flex items-center">Sitemap</a>
             </div>
           </div>
         </div>
