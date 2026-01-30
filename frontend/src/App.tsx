@@ -10,6 +10,7 @@ import {
 import type { User, AnalysisItem } from "./api";
 // import overviewImage from "./assets/overview-image.png";
 import pdfImage from "./assets/pdf.png";
+import qualifydLogo from "./assets/qb_logo.png";
 import { MdEmojiFlags, MdOutlineEditNote } from "react-icons/md";
 import { SiPastebin, SiVictoriametrics } from "react-icons/si";
 import { GoGoal, GoProjectSymlink } from "react-icons/go";
@@ -438,14 +439,13 @@ function App() {
               onClick={handleGoHome}
               className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity cursor-pointer"
             >
-              <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-blue-600 shadow-lg">
-                <svg className="h-5 w-5 sm:h-6 sm:w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
+              <img 
+                src={qualifydLogo} 
+                alt="Qualifyd.ai Logo" 
+                className="h-8 w-auto sm:h-10 lg:h-12 object-contain"
+              />
               <div>
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Qualifyd.ai</h1>
                   <span className="rounded-full bg-gray-200 px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold text-gray-700">BETA</span>
                 </div>
                 <p className="text-[10px] sm:text-xs text-gray-600 hidden xs:block">Resume optimization & ATS analysis</p>
@@ -1281,9 +1281,14 @@ function App() {
         <div className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-10 lg:px-8 lg:py-12">
           <div className="flex flex-col items-center justify-between gap-4 sm:gap-6 md:flex-row">
             <div className="text-center md:text-left flex flex-col items-center md:items-start">
+              <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center md:justify-start mb-2">
+                <img 
+                  src={qualifydLogo} 
+                  alt="Qualifyd.ai Logo" 
+                  className="h-6 w-auto sm:h-8 object-contain"
+                />
+              </div>
               <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center md:justify-start text-xs sm:text-sm">
-                <span className="font-semibold text-gray-900">Qualifyd.ai</span>
-                <span className="text-gray-400">|</span>
                 <span className="text-gray-700">Rule-based scoring and analysis</span>
               </div>
               <p className="mt-2 text-[10px] sm:text-xs text-gray-600 text-center md:text-left">
