@@ -63,8 +63,8 @@ function HowItWorksGrid() {
     },
     {
       icon: <GoGoal fontSize={40} className="fill-green-700" />,
-      title: "Deterministic Scoring",
-      description: "Deterministic scoring for Fit, ATS, Writing",
+      title: "Precision Scoring",
+      description: "Scores are determined based on fit, ATS alignment, and writing quality.",
       bgColor: "bg-green-100",
     },
     {
