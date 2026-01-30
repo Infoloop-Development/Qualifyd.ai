@@ -112,7 +112,7 @@ function HowItWorksGrid({ isMainPage = false }: { isMainPage?: boolean }) {
   );
 }
 
-function WhatYouGetGrid() {
+function WhatYouGetGrid({ isMainPage = false }: { isMainPage?: boolean }) {
   const items = [
     {
       icon: <FaPen size={30} className="fill-primary-500" />, text:
@@ -188,7 +188,7 @@ function PrivacySection() {
   // );
 }
 
-function HowToUseGrid() {
+function HowToUseGrid({ isMainPage = false }: { isMainPage?: boolean }) {
   const steps = [
     "Paste JD text.",
     "Upload your resume (PDF/DOCX).",
@@ -203,7 +203,7 @@ function HowToUseGrid() {
           <img src={pdfImage} className="w-full h-full" alt="Resume analysis illustration" />
         </div>
         <div className="flex flex-col items-start lg:items-start w-full lg:w-auto order-1 lg:order-2">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-left w-full lg:text-left mb-4 sm:mb-6">How to use</h2>
+          <h2 className={`text-2xl sm:text-3xl font-bold text-left w-full lg:text-left mb-4 sm:mb-6 ${isMainPage ? 'text-white' : 'text-gray-900'}`}>How to use</h2>
           {steps.map((step, idx) => (
             <div key={idx} className="flex items-start text-left gap-3 sm:gap-4 mt-3 sm:mt-4 w-full">
               <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary-100 text-base sm:text-lg font-bold text-primary-500 flex-shrink-0">
