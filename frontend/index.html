@@ -190,12 +190,16 @@
       }, 100);
     });
 
-    // Initialize Vanta Fog effect after page loads
+    // Initialize Vanta Fog effect after page loads - only on main page
     let vantaEffect;
     function initVanta() {
       if (typeof VANTA !== 'undefined') {
         const vantaBg = document.getElementById('vanta-bg');
-        if (vantaBg) {
+        if (vantaBg && vantaBg.offsetParent !== null) {
+          // Only initialize if element is visible (main page)
+          if (vantaEffect && vantaEffect.destroy) {
+            vantaEffect.destroy();
+          }
           vantaEffect = VANTA.FOG({
             el: "#vanta-bg",
             mouseControls: true,
@@ -211,6 +215,10 @@
             speed: 4.50,
             zoom: 0.20
           });
+        } else if (vantaEffect && vantaEffect.destroy) {
+          // Destroy effect if we're not on main page
+          vantaEffect.destroy();
+          vantaEffect = null;
         }
       } else {
         // Retry if VANTA is not loaded yet
@@ -221,6 +229,18 @@
     // Initialize when DOM is ready and React has mounted
     setTimeout(function() {
       initVanta();
+    }, 500);
+
+    // Watch for route changes and reinitialize/destroy effect
+    let lastPath = window.location.pathname;
+    setInterval(function() {
+      const currentPath = window.location.pathname;
+      if (currentPath !== lastPath) {
+        lastPath = currentPath;
+        setTimeout(initVanta, 300);
+      } else {
+        initVanta();
+      }
     }, 500);
   </script>
 </body>

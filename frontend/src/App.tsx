@@ -429,9 +429,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-gray-900 relative">
-      {/* Vanta Fog Background */}
-      <div id="vanta-bg" className="fixed inset-0 -z-10"></div>
+    <div className={`min-h-screen text-gray-900 relative ${!showProfile && !hasResults ? 'bg-transparent' : 'bg-white'}`}>
+      {/* Vanta Fog Background - Only on main page */}
+      {!showProfile && !hasResults && (
+        <div id="vanta-bg" className="fixed inset-0 -z-10"></div>
+      )}
       <div className="relative z-10">
       {/* Header */}
       <header className={`sticky top-0 border-b border-gray-200 bg-white shadow-sm ${showAuthModal ? 'z-30' : 'z-50'}`}>
