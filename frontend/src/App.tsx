@@ -823,9 +823,6 @@ function App() {
               {analyzeError}
             </div>
           )}
-          {jobId && (
-            <p className="text-xs text-gray-600">Job ID: {jobId}</p>
-          )}
           {isAnalyzing && (
             <div className="flex items-center gap-2 text-sm text-primary-500">
               <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-500 border-t-transparent" />
