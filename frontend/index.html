@@ -152,11 +152,22 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #000000;
+      background-color: #ffffff;
+      transition: background-color 0.3s ease-in-out;
     }
     
     #root {
       min-height: 100vh;
+    }
+
+    /* Smooth transition for Vanta background */
+    #vanta-bg {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #vanta-bg.loaded {
+      opacity: 1;
     }
   </style>
 </head>
@@ -200,25 +211,44 @@
           if (vantaEffect && vantaEffect.destroy) {
             vantaEffect.destroy();
           }
-          vantaEffect = VANTA.FOG({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            highlightColor: 0x3c967c,
-            midtoneColor: 0x15a6b3,
-            lowlightColor: 0xffffff,
-            baseColor: 0xffffff,
-            blurFactor: 0.90,
-            speed: 4.50,
-            zoom: 0.20
-          });
+          
+          // Initialize with a slight delay to ensure smooth transition
+          setTimeout(function() {
+            vantaEffect = VANTA.FOG({
+              el: "#vanta-bg",
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              highlightColor: 0x3c967c,
+              midtoneColor: 0x15a6b3,
+              lowlightColor: 0xffffff,
+              baseColor: 0xffffff,
+              blurFactor: 0.90,
+              speed: 4.50,
+              zoom: 0.20
+            });
+            
+            // Fade in the effect smoothly
+            setTimeout(function() {
+              if (vantaBg) {
+                vantaBg.classList.add('loaded');
+              }
+            }, 200);
+          }, 100);
         } else if (vantaEffect && vantaEffect.destroy) {
           // Destroy effect if we're not on main page
-          vantaEffect.destroy();
-          vantaEffect = null;
+          const vantaBg = document.getElementById('vanta-bg');
+          if (vantaBg) {
+            vantaBg.classList.remove('loaded');
+          }
+          setTimeout(function() {
+            if (vantaEffect && vantaEffect.destroy) {
+              vantaEffect.destroy();
+              vantaEffect = null;
+            }
+          }, 300);
         }
       } else {
         // Retry if VANTA is not loaded yet
