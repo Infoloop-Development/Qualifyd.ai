@@ -540,10 +540,10 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen text-gray-900 relative ${!showProfile && !hasResults ? '' : 'bg-white'}`} style={{ minHeight: '100vh', minHeight: '-webkit-fill-available' }}>
+    <div className={`min-h-screen text-gray-900 relative ${!showProfile && !hasResults ? '' : 'bg-white'}`} style={{ minHeight: '100vh' } as React.CSSProperties & { minHeight: string }}>
       {/* Vanta Dots Background - Only on main page */}
       {!showProfile && !hasResults && (
-        <div id="vanta-bg" className="fixed inset-0 z-0" style={{ width: '100%', height: '100%', minHeight: '100vh', minHeight: '-webkit-fill-available' }}></div>
+        <div id="vanta-bg" className="fixed inset-0 z-0" style={{ width: '100%', height: '100%', minHeight: '100vh' } as React.CSSProperties & { minHeight: string }}></div>
       )}
       <div className={`relative ${!showProfile && !hasResults ? 'z-10' : 'z-0'}`}>
       {/* Header */}
