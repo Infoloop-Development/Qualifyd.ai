@@ -1065,7 +1065,7 @@ function App() {
 
         {!currentUser && showAuthModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, width: '100vw', height: '100vh' }}>
-            <div className="relative w-full max-w-md rounded-2xl bg-white p-4 sm:p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div className="relative w-full max-w-md rounded-2xl bg-white p-4 sm:p-6 shadow-2xl max-h-[90vh] overflow-y-auto mx-auto">
               {/* Only show close button when there are NO results - if results exist, user MUST login */}
               {!hasResults && (
                 <button
@@ -1079,7 +1079,7 @@ function App() {
                   </svg>
                 </button>
               )}
-              <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl font-bold text-gray-900 text-center">
+              <h2 className="mb-3 sm:mb-4 text-base sm:text-lg lg:text-xl font-bold text-gray-900 text-center leading-tight px-2">
                 {authMode === "signup" ? "Create your free account to view results" : "Log in to view your results"}
               </h2>
               <p className="mb-4 sm:mb-6 text-xs sm:text-sm text-gray-600 text-center">
@@ -1214,7 +1214,7 @@ function App() {
 
                 <button
                   type="button"
-                  className="mt-2 w-full rounded-lg bg-primary-500 px-4 py-3 sm:py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-600 disabled:cursor-not-allowed disabled:bg-gray-400 min-h-[44px]"
+                  className="mt-2 w-full rounded-lg bg-primary-500 px-4 py-3 sm:py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-primary-600 disabled:cursor-not-allowed disabled:bg-gray-400 min-h-[44px] whitespace-normal break-words"
                   disabled={authLoading}
                   onClick={authMode === "signup" ? handleSubmitSignup : handleSubmitLogin}
                 >
