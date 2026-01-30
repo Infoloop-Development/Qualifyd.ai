@@ -1299,6 +1299,7 @@ function App() {
               <a href="#" className="transition-colors hover:text-blue-600 font-medium">Privacy</a>
               <a href="#" className="transition-colors hover:text-blue-600 font-medium">Terms</a>
               <a href="#" className="transition-colors hover:text-blue-600 font-medium">Support</a>
+              <a href="/sitemap.xml" className="transition-colors hover:text-blue-600 font-medium">Sitemap</a>
             </div>
           </div>
         </div>
