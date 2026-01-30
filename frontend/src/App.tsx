@@ -532,7 +532,7 @@ function App() {
         <>
         {/* Hero Section */}
         <section className="flex min-h-[70vh] sm:min-h-[80vh] lg:min-h-[85vh] items-center py-8 sm:py-10 lg:py-12 mb-8 sm:mb-12 lg:mb-16">
-          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               {/* Left Column - Content */}
               <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-center sm:text-left order-1 lg:order-1">
