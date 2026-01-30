@@ -142,7 +142,7 @@ function WhatYouGetGrid() {
 
   return (
     <section className="space-y-6 sm:space-y-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center">What you get</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Qualifyd.ai delivers</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {items.map((item, idx) => (
           <div key={idx} className="flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 p-4 sm:p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all">
