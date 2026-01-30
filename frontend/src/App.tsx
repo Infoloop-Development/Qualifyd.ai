@@ -1180,7 +1180,7 @@ function App() {
                   )}
                   {authMode === "signup" && !fieldErrors.password && (
                     <p className="mt-1 text-xs text-gray-500">
-                      Password must be alphanumeric (letters and numbers only), at least 8 characters
+                      Password must be at least 8 characters and contain at least one letter and one number
                     </p>
                   )}
                 </div>
