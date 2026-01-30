@@ -512,7 +512,7 @@ function App() {
         {!showProfile && (
         <>
         {/* Hero Section */}
-        <section className="flex min-h-[70vh] sm:min-h-[80vh] lg:min-h-[85vh] items-center py-8 sm:py-10 lg:py-12">
+        <section className="flex min-h-[70vh] sm:min-h-[80vh] lg:min-h-[85vh] items-center py-8 sm:py-10 lg:py-12 mb-8 sm:mb-12 lg:mb-16">
           <div className="mx-auto w-full max-w-7xl px-3 sm:px-4 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               {/* Left Column - Content */}
@@ -675,7 +675,7 @@ function App() {
         {/* How it works Section */}
         <section 
           id="how-it-works-section"
-          className={`mb-10 sm:mb-12 lg:mb-16 pt-8 sm:pt-10 lg:pt-12 transition-opacity duration-700 ${
+          className={`mb-8 sm:mb-12 lg:mb-16 py-8 sm:py-10 lg:py-12 transition-opacity duration-700 ${
             isHowItWorksVisible ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -683,7 +683,7 @@ function App() {
         </section>
 
         {/* Upload Section */}
-        <div id="upload-section" className="mb-8 sm:mb-12 space-y-6">
+        <div id="upload-section" className="mb-8 sm:mb-12 lg:mb-16 py-8 sm:py-10 lg:py-12 space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
             <div className="lg:col-span-6">
               <label className="mb-2 sm:mb-3 block text-base sm:text-lg font-semibold text-gray-900">
@@ -1254,7 +1254,7 @@ function App() {
         </section> */}
 
         {/* What you get Section */}
-        <section className="mb-16 border-t border-gray-200 pt-16">
+        <section className="mb-8 sm:mb-12 lg:mb-16 border-t border-gray-200 pt-8 sm:pt-12 lg:pt-16">
           <WhatYouGetGrid />
         </section>
 
@@ -1264,7 +1264,7 @@ function App() {
         </section> */}
 
         {/* How to use Section */}
-        <section className="border-t border-gray-200 pt-8 sm:pt-12 lg:pt-16">
+        <section className="mb-8 sm:mb-12 lg:mb-16 border-t border-gray-200 pt-8 sm:pt-12 lg:pt-16">
           <HowToUseGrid />
         </section>
 
