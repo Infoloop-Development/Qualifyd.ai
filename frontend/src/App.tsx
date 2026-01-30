@@ -425,9 +425,6 @@ function App() {
     if (password.length < 8) {
       return "Password must be at least 8 characters";
     }
-    if (!/^[a-zA-Z0-9]+$/.test(password)) {
-      return "Password must be alphanumeric (letters and numbers only)";
-    }
     if (!/[a-zA-Z]/.test(password)) {
       return "Password must contain at least one letter";
     }
