@@ -238,6 +238,12 @@ function App() {
     password: "",
     confirmPassword: "",
   });
+  const [fieldErrors, setFieldErrors] = useState<{
+    fullName?: string;
+    email?: string;
+    password?: string;
+    confirmPassword?: string;
+  }>({});
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [analyses, setAnalyses] = useState<AnalysisItem[]>([]);
@@ -376,15 +382,107 @@ function App() {
 
   const handleAuthInputChange = (field: string, value: string) => {
     setAuthForm((prev) => ({ ...prev, [field]: value }));
+    // Clear error for this field when user starts typing
+    if (fieldErrors[field as keyof typeof fieldErrors]) {
+      setFieldErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[field as keyof typeof fieldErrors];
+        return newErrors;
+      });
+    }
+    setAuthError(null);
+  };
+
+  // Validation functions
+  const validateFullName = (name: string): string | null => {
+    if (!name.trim()) {
+      return "Full name is required";
+    }
+    if (name.trim().length < 2) {
+      return "Full name must be at least 2 characters";
+    }
+    if (/\d/.test(name)) {
+      return "Full name cannot contain numbers";
+    }
+    if (/[^a-zA-Z\s'-]/.test(name)) {
+      return "Full name can only contain letters, spaces, hyphens, and apostrophes";
+    }
+    return null;
+  };
+
+  const validateEmail = (email: string): string | null => {
+    if (!email.trim()) {
+      return "Email is required";
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return "Please enter a valid email address";
+    }
+    return null;
+  };
+
+  const validatePassword = (password: string): string | null => {
+    if (!password) {
+      return "Password is required";
+    }
+    if (password.length < 8) {
+      return "Password must be at least 8 characters";
+    }
+    if (!/^[a-zA-Z0-9]+$/.test(password)) {
+      return "Password must be alphanumeric (letters and numbers only)";
+    }
+    if (!/[a-zA-Z]/.test(password)) {
+      return "Password must contain at least one letter";
+    }
+    if (!/[0-9]/.test(password)) {
+      return "Password must contain at least one number";
+    }
+    return null;
+  };
+
+  const validateConfirmPassword = (confirmPassword: string, password: string): string | null => {
+    if (!confirmPassword) {
+      return "Please confirm your password";
+    }
+    if (confirmPassword !== password) {
+      return "Passwords do not match";
+    }
+    return null;
+  };
+
+  const getPasswordStrength = (password: string): { strength: string; color: string } => {
+    if (!password) return { strength: "", color: "" };
+    if (password.length < 8) return { strength: "Weak", color: "text-red-600" };
+    if (password.length >= 8 && password.length < 12) return { strength: "Medium", color: "text-yellow-600" };
+    return { strength: "Strong", color: "text-green-600" };
   };
 
   const handleSubmitSignup = async () => {
     setAuthError(null);
+    
+    // Validate all fields
+    const errors: typeof fieldErrors = {};
+    const fullNameError = validateFullName(authForm.fullName);
+    const emailError = validateEmail(authForm.email);
+    const passwordError = validatePassword(authForm.password);
+    const confirmPasswordError = validateConfirmPassword(authForm.confirmPassword, authForm.password);
+
+    if (fullNameError) errors.fullName = fullNameError;
+    if (emailError) errors.email = emailError;
+    if (passwordError) errors.password = passwordError;
+    if (confirmPasswordError) errors.confirmPassword = confirmPasswordError;
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      return;
+    }
+
+    setFieldErrors({});
     setAuthLoading(true);
     try {
       const resp = await registerUser({
-        fullName: authForm.fullName,
-        email: authForm.email,
+        fullName: authForm.fullName.trim(),
+        email: authForm.email.trim(),
         password: authForm.password,
         confirmPassword: authForm.confirmPassword,
       });
@@ -1016,45 +1114,97 @@ function App() {
               <div className="space-y-3">
                 {authMode === "signup" && (
                   <div>
-                    <label className="mb-1 block text-xs font-medium text-gray-700">Full name</label>
+                    <label className="mb-1 block text-xs font-medium text-gray-700">
+                      Full name <span className="text-red-500">*</span>
+                    </label>
                     <input
                       type="text"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                      className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-1 ${
+                        fieldErrors.fullName
+                          ? "border-red-300 focus:border-red-500 focus:ring-red-500"
+                          : "border-gray-300 focus:border-primary-500 focus:ring-primary-500"
+                      }`}
                       value={authForm.fullName}
                       onChange={(e) => handleAuthInputChange("fullName", e.target.value)}
+                      placeholder="Enter your full name"
                     />
+                    {fieldErrors.fullName && (
+                      <p className="mt-1 text-xs text-red-600">{fieldErrors.fullName}</p>
+                    )}
                   </div>
                 )}
 
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-700">Email</label>
+                  <label className="mb-1 block text-xs font-medium text-gray-700">
+                    Email <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="email"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-1 ${
+                      fieldErrors.email
+                        ? "border-red-300 focus:border-red-500 focus:ring-red-500"
+                        : "border-gray-300 focus:border-primary-500 focus:ring-primary-500"
+                    }`}
                     value={authForm.email}
                     onChange={(e) => handleAuthInputChange("email", e.target.value)}
+                    placeholder="Enter your email"
                   />
+                  {fieldErrors.email && (
+                    <p className="mt-1 text-xs text-red-600">{fieldErrors.email}</p>
+                  )}
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-700">Password</label>
+                  <label className="mb-1 block text-xs font-medium text-gray-700">
+                    Password <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="password"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-1 ${
+                      fieldErrors.password
+                        ? "border-red-300 focus:border-red-500 focus:ring-red-500"
+                        : "border-gray-300 focus:border-primary-500 focus:ring-primary-500"
+                    }`}
                     value={authForm.password}
                     onChange={(e) => handleAuthInputChange("password", e.target.value)}
+                    placeholder="Enter your password"
                   />
+                  {authForm.password && !fieldErrors.password && (
+                    <div className="mt-1 flex items-center gap-2">
+                      <span className={`text-xs font-medium ${getPasswordStrength(authForm.password).color}`}>
+                        Password strength: {getPasswordStrength(authForm.password).strength}
+                      </span>
+                    </div>
+                  )}
+                  {fieldErrors.password && (
+                    <p className="mt-1 text-xs text-red-600">{fieldErrors.password}</p>
+                  )}
+                  {authMode === "signup" && !fieldErrors.password && (
+                    <p className="mt-1 text-xs text-gray-500">
+                      Password must be alphanumeric (letters and numbers only), at least 8 characters
+                    </p>
+                  )}
                 </div>
 
                 {authMode === "signup" && (
                   <div>
-                    <label className="mb-1 block text-xs font-medium text-gray-700">Confirm password</label>
+                    <label className="mb-1 block text-xs font-medium text-gray-700">
+                      Confirm password <span className="text-red-500">*</span>
+                    </label>
                     <input
                       type="password"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                      className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-1 ${
+                        fieldErrors.confirmPassword
+                          ? "border-red-300 focus:border-red-500 focus:ring-red-500"
+                          : "border-gray-300 focus:border-primary-500 focus:ring-primary-500"
+                      }`}
                       value={authForm.confirmPassword}
                       onChange={(e) => handleAuthInputChange("confirmPassword", e.target.value)}
+                      placeholder="Confirm your password"
                     />
+                    {fieldErrors.confirmPassword && (
+                      <p className="mt-1 text-xs text-red-600">{fieldErrors.confirmPassword}</p>
+                    )}
                   </div>
                 )}
 
