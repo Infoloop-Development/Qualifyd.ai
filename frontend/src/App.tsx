@@ -10,7 +10,7 @@ import {
 import type { User, AnalysisItem } from "./api";
 // import overviewImage from "./assets/overview-image.png";
 import pdfImage from "./assets/pdf.png";
-import qualifydLogo from "./assets/Qualifyd 2.png";
+import qualifydLogo from "./assets/qualifyd-logo.png";
 import { MdEmojiFlags, MdOutlineEditNote } from "react-icons/md";
 import { SiPastebin, SiVictoriametrics } from "react-icons/si";
 import { GoGoal, GoProjectSymlink } from "react-icons/go";
