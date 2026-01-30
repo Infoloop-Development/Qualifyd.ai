@@ -777,9 +777,9 @@ function App() {
                 <p className="mt-1 text-xs sm:text-sm text-red-600">This field is required</p>
               )}
               <button
-                className="mt-4 sm:mt-5 w-full rounded-xl bg-primary-500 px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-600 hover:shadow-xl disabled:cursor-not-allowed disabled:shadow-none"
+                className="mt-4 sm:mt-5 w-full rounded-xl bg-primary-500 px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-600 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none"
                 onClick={handleAnalyze}
-                disabled={!jdText || !file || isAnalyzing}
+                disabled={isAnalyzing}
               >
                 {isAnalyzing ? "🔄 Analyzing..." : "Analyze Resume"}
               </button>
