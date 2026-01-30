@@ -429,7 +429,7 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen text-gray-900 relative ${!showProfile && !hasResults ? 'bg-transparent' : 'bg-white'}`}>
+    <div className={`min-h-screen relative ${!showProfile && !hasResults ? 'bg-transparent text-white' : 'bg-white text-gray-900'}`}>
       {/* Vanta Fog Background - Only on main page */}
       {!showProfile && !hasResults && (
         <div id="vanta-bg" className="fixed inset-0 -z-10"></div>
