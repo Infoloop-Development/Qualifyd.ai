@@ -98,7 +98,7 @@ function HowItWorksGrid({ isMainPage = false }: { isMainPage?: boolean }) {
             </div>
 
             <div className="space-y-1.5 sm:space-y-2">
-              <h3 className="text-base sm:text-lg font-medium text-gray-900">
+              <h3 className={`text-base sm:text-lg font-medium ${isMainPage ? 'text-white' : 'text-gray-900'}`}>
                 {step.title}
               </h3>
               <p className={`text-xs sm:text-sm leading-relaxed px-2 ${isMainPage ? 'text-white/80' : 'text-gray-500'}`}>
