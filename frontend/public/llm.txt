@@ -1,0 +1,32 @@
+# llm.txt for Qualifyd.ai
+# This file provides information about the website for AI/LLM crawlers
+
+# Site Information
+Site: https://qualifyd.ai
+Name: Qualifyd.ai
+Description: Resume optimization and ATS analysis tool. Get instant Fit, ATS, and Writing scores with actionable recommendations to optimize your resume for job descriptions.
+
+# Purpose
+Purpose: Help job seekers optimize their resumes to match specific job descriptions, pass ATS filters, and increase interview opportunities.
+
+# Key Features
+Features:
+- Resume analysis against job descriptions
+- Three comprehensive scores: Fit Score, ATS Score, Writing Score
+- Actionable recommendations for improvement
+- Missing skills and keywords detection
+- Formatting and writing quality checks
+- Optional AI-powered resume rewriting
+
+# Technology
+Technology:
+- Frontend: React, TypeScript, TailwindCSS
+- Backend: Node.js, Express
+- Analysis: Rule-based deterministic scoring (transparent, explainable)
+- Privacy: Rule-based by default, optional AI features
+
+# Contact
+Contact: Available through the website contact form
+
+# Last Updated
+Last Updated: 2024-01-30

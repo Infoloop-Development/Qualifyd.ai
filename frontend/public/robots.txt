@@ -1,0 +1,19 @@
+# robots.txt for Qualifyd.ai
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Disallow admin and API endpoints
+Disallow: /api/
+Disallow: /admin/
+
+# Allow important pages
+Allow: /
+Allow: /health
+
+# Sitemap location
+Sitemap: https://qualifyd.ai/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
