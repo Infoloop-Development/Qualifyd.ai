@@ -430,7 +430,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 relative">
-      {/* Vanta Fog Background - Only on main page */}
+      {/* Vanta Dots Background - Only on main page */}
       {!showProfile && !hasResults && (
         <div id="vanta-bg" className="fixed inset-0 -z-10"></div>
       )}
