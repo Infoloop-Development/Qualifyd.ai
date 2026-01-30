@@ -31,6 +31,11 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true });
 });
 
+// Also expose health at /api/health for nginx proxying
+app.get("/api/health", (_req, res) => {
+  res.json({ ok: true });
+});
+
 app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   logger.error({ err }, "Unhandled error");
   res.status(500).json({ error: "Internal server error" });
