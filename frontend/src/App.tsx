@@ -444,12 +444,7 @@ function App() {
                 alt="Qualifyd.ai Logo" 
                 className="h-8 w-auto sm:h-10 lg:h-12 object-contain"
               />
-              <div>
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <span className="rounded-full bg-gray-200 px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold text-gray-700">BETA</span>
-                </div>
-                <p className="text-[10px] sm:text-xs text-gray-600 hidden xs:block">Resume optimization & ATS analysis</p>
-              </div>
+              <p className="text-[10px] sm:text-xs text-gray-600 hidden xs:block">Resume optimization & ATS analysis</p>
             </button>
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="relative">
