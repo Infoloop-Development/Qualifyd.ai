@@ -35,7 +35,7 @@
   <meta name="twitter:image:alt" content="Qualifyd.ai - Resume Optimization Platform" />
   
   <!-- Additional Meta Tags -->
-  <meta name="theme-color" content="#2563eb" />
+  <meta name="theme-color" content="#17a6b5" />
   <link rel="canonical" href="https://qualifyd.ai/" />
   
   <!-- font -->
@@ -67,11 +67,10 @@
     }
     
     .loader-logo {
-      font-size: 28px;
-      font-weight: 700;
-      color: #2563eb;
       margin-bottom: 40px;
-      font-family: 'Source Sans 3', sans-serif;
+      height: 60px;
+      width: auto;
+      object-fit: contain;
     }
     
     .loader {
@@ -81,7 +80,7 @@
       width: 150px;
       box-sizing: border-box;
       overflow: hidden;
-      border: 2px solid #2563eb;
+      border: 2px solid #17a6b5;
       border-radius: 20px;
     }
     
@@ -93,7 +92,7 @@
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: #2563eb;
+      background: #17a6b5;
       animation: ballbns 3s ease-in-out infinite;
     }
     
@@ -165,7 +164,7 @@
 <body>
   <!-- Initial loader - shows immediately, hidden by React -->
   <div id="initial-loader">
-    <div class="loader-logo">Qualifyd.ai</div>
+    <img src="/qualifyd-logo.png" alt="Qualifyd.ai" class="loader-logo" />
     <span class="loader"></span>
     <div class="loader-text">Loading...</div>
   </div>
