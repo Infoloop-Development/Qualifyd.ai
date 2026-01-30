@@ -437,7 +437,7 @@ function App() {
             <button
               type="button"
               onClick={handleGoHome}
-              className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+              className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity cursor-pointer p-0 m-0 border-0 bg-transparent"
             >
               <img 
                 src={qualifydLogo} 
