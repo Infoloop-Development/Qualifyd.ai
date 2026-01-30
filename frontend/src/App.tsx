@@ -6,7 +6,6 @@ import {
   downloadResumeForAnalysis,
   analyzeResume,
   fetchJobStatus,
-  requestRewrite,
 } from "./api";
 import type { User, AnalysisItem } from "./api";
 // import overviewImage from "./assets/overview-image.png";
@@ -75,13 +74,6 @@ function HowItWorksGrid() {
         "Surface gaps: missing skills/sections, bullet issues, format flags",
       bgColor: "bg-orange-100",
     },
-    {
-      icon: <BsRobot fontSize={40} className="fill-pink-700" />,
-      title: "AI Rewrite",
-      description:
-        "Optional AI rewrite for summary/bullets (only if you click it)",
-      bgColor: "bg-pink-100",
-    },
   ];
 
 
@@ -91,7 +83,7 @@ function HowItWorksGrid() {
         How it works
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {steps.map((step, idx) => (
           <div
             key={idx}
@@ -142,7 +134,7 @@ function WhatYouGetGrid() {
     },
     {
       icon: <GiShintoShrineMirror size={30} className="fill-blue-700" />, text:
-        "Summary hint; optional AI rewrites (clearly labeled)"
+        "Summary hints and writing suggestions"
     }
   ];
 
@@ -228,12 +220,9 @@ function App() {
   const [jdText, setJdText] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [jobId, setJobId] = useState<string | null>(null);
-  const [rewriteResult, setRewriteResult] = useState<any>(null);
   const [statusData, setStatusData] = useState<any>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [isRewriting, setIsRewriting] = useState(false);
   const [analyzeError, setAnalyzeError] = useState<string | null>(null);
-  const [rewriteError, setRewriteError] = useState<string | null>(null);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<"login" | "signup">("login");
@@ -261,7 +250,6 @@ function App() {
     setIsAnalyzing(true);
     setAnalyzeError(null);
     setStatusData(null);
-    setRewriteResult(null);
 
     try {
       const result = await analyzeResume(jdText, file);
@@ -280,32 +268,6 @@ function App() {
     }
   };
 
-  const handleRewrite = async () => {
-    if (!statusData?.result?.suggestions) {
-      setRewriteError("Run analysis first");
-      return;
-    }
-
-    setIsRewriting(true);
-    setRewriteError(null);
-
-    try {
-      const result = await requestRewrite({
-        jdKeywords: statusData.result.suggestions.keywordsToAdd ?? [],
-        jdSkills: [
-          ...(statusData.result.suggestions.missingSkills ?? []),
-          ...(statusData.result.suggestions.keywordsToAdd ?? [])
-        ],
-        summary: statusData.parsed?.resume?.summary || "",
-        bullets: statusData.result.suggestions.bulletIssues.slice(0, 5),
-      });
-      setRewriteResult(result);
-    } catch (error) {
-      setRewriteError((error as Error).message);
-    } finally {
-      setIsRewriting(false);
-    }
-  };
 
   const suggestions = statusData?.result?.suggestions;
   const scores = statusData?.result?.scores;
@@ -454,7 +416,7 @@ function App() {
                   <h1 className="text-2xl font-bold text-gray-900">Qualifyd.ai</h1>
                   <span className="rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold text-gray-700">BETA</span>
                 </div>
-                <p className="text-xs text-gray-600">AI-powered resume optimization</p>
+                <p className="text-xs text-gray-600">Resume optimization & ATS analysis</p>
               </div>
             </button>
             <div className="flex items-center gap-3">
@@ -736,19 +698,19 @@ function App() {
               <div className="col-span-6 flex flex-col gap-6">
                 <p className="font-medium text-sm lg:text-lg">
                   Resume ↔ JD analyzer that parses both, scores Fit/ATS/Writing, and delivers
-                  actionable, rule-based improvements with an optional AI rewrite step.
+                  actionable, rule-based improvements.
                 </p>
               </div>
               <div className="col-span-6">
                 <ul className="list-disc pl-5 space-y-2">
                   <li className="text-sm lg:text-lg font-medium">
-                    Deterministic processing by default; no AI unless you request it.
+                    Deterministic processing by default; fully transparent and explainable.
                   </li>
                   <li className="text-sm lg:text-lg font-medium">
-                    AI rewrite sends only needed text to Gemini; requires your key.
+                    Rule-based scoring ensures consistent and reliable results.
                   </li>
                   <li className="text-sm lg:text-lg font-medium">
-                    Skip AI rewrite anytime; core results stay rule-based.
+                    Privacy-focused; your data stays secure and private.
                   </li>
                 </ul>
               </div>
@@ -869,7 +831,7 @@ function App() {
                   </div>
                 </div>
 
-                {/* Bullet Issues & AI Rewrite */}
+                {/* Writing Improvements */}
                 <div className="rounded-xl border border-gray-200 bg-white p-6 space-y-6">
                   <h3 className="flex items-center gap-2 text-lg font-bold text-gray-900">
                     <span className="text-xl">📝</span> Writing Improvements
@@ -906,42 +868,6 @@ function App() {
                     <div className="rounded-lg bg-blue-50 p-4 text-sm border border-gray-200">
                       <span className="font-semibold text-gray-900">💡 Summary Tip: </span>
                       <span className="text-gray-700">{suggestions.summaryHint}</span>
-                    </div>
-                  )}
-
-                  <div className="flex flex-wrap items-center gap-3">
-                    <button
-                      className="rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white shadow-lg transition-all hover:bg-emerald-700 hover:shadow-xl disabled:cursor-not-allowed disabled:bg-gray-400 disabled:shadow-none"
-                      onClick={handleRewrite}
-                      disabled={!suggestions || isRewriting}
-                    >
-                      {isRewriting ? "✨ Rewriting..." : "✨ AI Rewrite with Gemini"}
-                    </button>
-                    {rewriteError && (
-                      <span className="text-sm text-red-600">{rewriteError}</span>
-                    )}
-                  </div>
-
-                  {rewriteResult && (
-                    <div className="space-y-4 rounded-lg border border-gray-200 bg-gray-50 p-5">
-                      {rewriteResult.summary && (
-                        <div>
-                          <p className="mb-2 text-sm font-bold text-gray-900">✨ AI-Generated Summary</p>
-                          <p className="text-sm leading-relaxed text-gray-700">{rewriteResult.summary}</p>
-                        </div>
-                      )}
-                      {rewriteResult.bullets?.length ? (
-                        <div>
-                          <p className="mb-3 text-sm font-bold text-gray-900">✨ AI-Generated Bullets</p>
-                          <div className="space-y-2">
-                            {rewriteResult.bullets.map((b: string, idx: number) => (
-                              <div key={idx} className="rounded-lg bg-white px-4 py-2 text-sm text-gray-700 border border-gray-200">
-                                {b}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
                     </div>
                   )}
                 </div>
@@ -1257,7 +1183,7 @@ function App() {
               <h2 className="text-4xl font-bold text-gray-900">Overview</h2>
               <p className="text-lg text-gray-700 leading-relaxed">
                 Resume ↔ JD analyzer that parses both, scores Fit/ATS/Writing, and delivers actionable, rule-based
-                improvements with an optional AI rewrite step.
+                improvements.
               </p>
             </div>
           </div>
@@ -1289,7 +1215,7 @@ function App() {
               <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start text-sm">
                 <span className="font-semibold text-gray-900">Qualifyd.ai</span>
                 <span className="text-gray-400">|</span>
-                <span className="text-gray-700">Rule-based scoring with optional AI rewrites</span>
+                <span className="text-gray-700">Rule-based scoring and analysis</span>
               </div>
               <p className="mt-2 text-xs text-gray-600">
                 Made with love for the community by <a href="https://infoloop.co/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-medium transition-colors">Infoloop Technologies LLP</a>.

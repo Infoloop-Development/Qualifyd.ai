@@ -16,14 +16,13 @@ Features:
 - Actionable recommendations for improvement
 - Missing skills and keywords detection
 - Formatting and writing quality checks
-- Optional AI-powered resume rewriting
 
 # Technology
 Technology:
 - Frontend: React, TypeScript, TailwindCSS
 - Backend: Node.js, Express
 - Analysis: Rule-based deterministic scoring (transparent, explainable)
-- Privacy: Rule-based by default, optional AI features
+- Privacy: Rule-based processing, fully transparent and secure
 
 # Contact
 Contact: support@infoloop.co
