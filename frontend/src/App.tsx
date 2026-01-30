@@ -223,7 +223,6 @@ function HowToUseGrid() {
 function App() {
   const [jdText, setJdText] = useState("");
   const [file, setFile] = useState<File | null>(null);
-  const [jobId, setJobId] = useState<string | null>(null);
   const [statusData, setStatusData] = useState<any>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analyzeError, setAnalyzeError] = useState<string | null>(null);
@@ -278,8 +277,6 @@ function App() {
 
     try {
       const result = await analyzeResume(jdText, file);
-      setJobId(result.job_id);
-
       const status = await fetchJobStatus(result.job_id);
       setStatusData(status);
       // If results are ready and user is not logged in, show auth modal to gate results
