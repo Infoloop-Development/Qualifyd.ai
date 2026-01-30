@@ -1258,7 +1258,7 @@ style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, width: '100vw'
                     </>
                   )}
                   <p>
-                    You won&apos;t be able to close this until you&apos;re logged in — this keeps results tied to a user.
+                    You won&apos;t be able to close this until you&apos;re logged in, this keeps results tied to a user.
                   </p>
                 </div>
               </div>
