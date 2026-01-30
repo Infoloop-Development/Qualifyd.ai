@@ -10,6 +10,7 @@ import {
 } from "./api";
 import type { User, AnalysisItem } from "./api";
 // import overviewImage from "./assets/overview-image.png";
+import pdfImage from "./assets/pdf.png";
 import { MdEmojiFlags, MdOutlineEditNote } from "react-icons/md";
 import { SiPastebin, SiVictoriametrics } from "react-icons/si";
 import { GoGoal, GoProjectSymlink } from "react-icons/go";
@@ -203,7 +204,7 @@ function HowToUseGrid() {
     <section className="">
       <div className="flex justify-evenly items-center gap-12 flex-wrap">
         <div className="w-[250px] lg:w-[450px]">
-          <img src="../src/assets/pdf.png" className="w-full h-full" alt="" />
+          <img src={pdfImage} className="w-full h-full" alt="Resume analysis illustration" />
         </div>
         <div className="flex flex-col items-start">
           <h2 className="text-3xl font-bold text-gray-900 text-center">How to use</h2>
