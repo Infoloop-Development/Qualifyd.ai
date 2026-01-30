@@ -429,12 +429,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 relative">
+    <div className={`min-h-screen text-gray-900 relative ${!showProfile && !hasResults ? '' : 'bg-white'}`}>
       {/* Vanta Dots Background - Only on main page */}
       {!showProfile && !hasResults && (
-        <div id="vanta-bg" className="fixed inset-0 -z-10"></div>
+        <div id="vanta-bg" className="fixed inset-0 z-0" style={{ width: '100%', height: '100%' }}></div>
       )}
-      <div className="relative z-10">
+      <div className={`relative ${!showProfile && !hasResults ? 'z-10' : 'z-0'}`}>
       {/* Header */}
       <header className={`sticky top-0 border-b border-gray-200 bg-white shadow-sm ${showAuthModal ? 'z-30' : 'z-50'}`}>
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5">
