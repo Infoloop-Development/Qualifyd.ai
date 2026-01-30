@@ -432,7 +432,7 @@ function App() {
     <div className="min-h-screen bg-white text-gray-900">
       {/* Header */}
       <header className={`sticky top-0 border-b border-gray-200 bg-white shadow-sm ${showAuthModal ? 'z-30' : 'z-50'}`}>
-        <div className="mx-auto max-w-7xl px-3 py-3 sm:px-4 sm:py-4 lg:px-8 lg:py-5">
+        <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5">
           <div className="flex items-center justify-between flex-wrap gap-3 sm:gap-5">
             <button
               type="button"
@@ -508,12 +508,12 @@ function App() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-10 lg:px-8 lg:py-12">
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
         {!showProfile && (
         <>
         {/* Hero Section */}
         <section className="flex min-h-[70vh] sm:min-h-[80vh] lg:min-h-[85vh] items-center py-8 sm:py-10 lg:py-12 mb-8 sm:mb-12 lg:mb-16">
-          <div className="mx-auto w-full max-w-7xl px-3 sm:px-4 lg:px-8">
+          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               {/* Left Column - Content */}
               <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-center sm:text-left order-1 lg:order-1">
@@ -1273,7 +1273,7 @@ function App() {
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white">
-        <div className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-10 lg:px-8 lg:py-12">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
           <div className="flex flex-col items-center justify-between gap-4 sm:gap-6 md:flex-row">
             <div className="text-center md:text-left flex flex-col items-center md:items-start">
               <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center md:justify-start mb-2">
