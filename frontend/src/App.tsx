@@ -47,7 +47,7 @@ function ScoreCard({ label, value }: { label: string; value?: number }) {
   );
 }
 
-function HowItWorksGrid({ isMainPage = false }: { isMainPage?: boolean }) {
+function HowItWorksGrid() {
   const steps = [
     {
       icon: <MdOutlineEditNote fontSize={40} className="fill-primary-500" />,
@@ -79,7 +79,7 @@ function HowItWorksGrid({ isMainPage = false }: { isMainPage?: boolean }) {
 
   return (
     <section className="space-y-6 sm:space-y-8">
-      <h2 className={`text-2xl sm:text-3xl font-bold text-center ${isMainPage ? 'text-white' : 'text-gray-900'}`}>
+      <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900">
         How it works
       </h2>
 
@@ -98,10 +98,10 @@ function HowItWorksGrid({ isMainPage = false }: { isMainPage?: boolean }) {
             </div>
 
             <div className="space-y-1.5 sm:space-y-2">
-              <h3 className={`text-base sm:text-lg font-medium ${isMainPage ? 'text-white' : 'text-gray-900'}`}>
+              <h3 className="text-base sm:text-lg font-medium text-gray-900">
                 {step.title}
               </h3>
-              <p className={`text-xs sm:text-sm leading-relaxed px-2 ${isMainPage ? 'text-white/80' : 'text-gray-500'}`}>
+              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed px-2">
                 {step.description}
               </p>
             </div>
@@ -112,7 +112,7 @@ function HowItWorksGrid({ isMainPage = false }: { isMainPage?: boolean }) {
   );
 }
 
-function WhatYouGetGrid({ isMainPage = false }: { isMainPage?: boolean }) {
+function WhatYouGetGrid() {
   const items = [
     {
       icon: <FaPen size={30} className="fill-primary-500" />, text:
@@ -142,7 +142,7 @@ function WhatYouGetGrid({ isMainPage = false }: { isMainPage?: boolean }) {
 
   return (
     <section className="space-y-6 sm:space-y-8">
-      <h2 className={`text-2xl sm:text-3xl font-bold text-center ${isMainPage ? 'text-white' : 'text-gray-900'}`}>What you get</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center">What you get</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {items.map((item, idx) => (
           <div key={idx} className="flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 p-4 sm:p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all">
@@ -188,7 +188,7 @@ function PrivacySection() {
   // );
 }
 
-function HowToUseGrid({ isMainPage = false }: { isMainPage?: boolean }) {
+function HowToUseGrid() {
   const steps = [
     "Paste JD text.",
     "Upload your resume (PDF/DOCX).",
@@ -203,14 +203,14 @@ function HowToUseGrid({ isMainPage = false }: { isMainPage?: boolean }) {
           <img src={pdfImage} className="w-full h-full" alt="Resume analysis illustration" />
         </div>
         <div className="flex flex-col items-start lg:items-start w-full lg:w-auto order-1 lg:order-2">
-          <h2 className={`text-2xl sm:text-3xl font-bold text-left w-full lg:text-left mb-4 sm:mb-6 ${isMainPage ? 'text-white' : 'text-gray-900'}`}>How to use</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-left w-full lg:text-left mb-4 sm:mb-6">How to use</h2>
           {steps.map((step, idx) => (
             <div key={idx} className="flex items-start text-left gap-3 sm:gap-4 mt-3 sm:mt-4 w-full">
               <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary-100 text-base sm:text-lg font-bold text-primary-500 flex-shrink-0">
                 {idx + 1}
               </div>
               <div className="flex-1 min-w-0">
-                <p className={`text-sm sm:text-base lg:text-lg font-medium leading-relaxed text-left ${isMainPage ? 'text-white' : 'text-gray-900'}`}>{step}</p>
+                <p className="text-sm sm:text-base lg:text-lg text-gray-900 font-medium leading-relaxed text-left">{step}</p>
               </div>
             </div>
           ))}
@@ -429,14 +429,14 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen relative ${!showProfile && !hasResults ? 'bg-transparent text-white' : 'bg-white text-gray-900'}`}>
+    <div className="min-h-screen bg-white text-gray-900 relative">
       {/* Vanta Fog Background - Only on main page */}
       {!showProfile && !hasResults && (
         <div id="vanta-bg" className="fixed inset-0 -z-10"></div>
       )}
       <div className="relative z-10">
       {/* Header */}
-      <header className={`sticky top-0 border-b shadow-sm ${showAuthModal ? 'z-30' : 'z-50'} ${!showProfile && !hasResults ? 'border-white/20 bg-white/10 backdrop-blur-sm' : 'border-gray-200 bg-white'}`}>
+      <header className={`sticky top-0 border-b border-gray-200 bg-white shadow-sm ${showAuthModal ? 'z-30' : 'z-50'}`}>
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5">
           <div className="flex items-center justify-between flex-wrap gap-3 sm:gap-5">
             <button
@@ -449,7 +449,7 @@ function App() {
                 alt="Qualifyd.ai Logo" 
                 className="h-8 w-auto sm:h-10 lg:h-12 object-contain"
               />
-              <p className={`text-[10px] sm:text-xs hidden xs:block ${!showProfile && !hasResults ? 'text-white/80' : 'text-gray-600'}`}>Resume optimization & ATS analysis</p>
+              <p className="text-[10px] sm:text-xs text-gray-600 hidden xs:block">Resume optimization & ATS analysis</p>
             </button>
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="relative">
@@ -522,10 +522,10 @@ function App() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               {/* Left Column - Content */}
               <div className="space-y-4 sm:space-y-5 lg:space-y-6 text-center sm:text-left order-1 lg:order-1">
-                <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight ${!showProfile && !hasResults ? 'text-white' : 'text-gray-900'}`}>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900">
                   Optimize your resume to get more interviews
                 </h1>
-                <p className={`text-base sm:text-lg leading-relaxed max-w-xl mx-auto sm:mx-0 ${!showProfile && !hasResults ? 'text-white/90' : 'text-gray-600'}`}>
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto sm:mx-0">
                   Qualifyd.ai helps you optimize your resume for any job, highlighting the key experience and skills recruiters need to see.
                 </p>
                 <div className="pt-2 flex justify-center sm:justify-start">
@@ -537,7 +537,7 @@ function App() {
                   </button>
                 </div>
                 <div className="pt-3 sm:pt-4">
-                  <p className={`text-xs sm:text-sm font-medium mb-3 sm:mb-4 text-center sm:text-left ${!showProfile && !hasResults ? 'text-white/80' : 'text-gray-500'}`}>Qualifyd.ai users have been hired by:</p>
+                  <p className="text-xs sm:text-sm font-medium text-gray-500 mb-3 sm:mb-4 text-center sm:text-left">Qualifyd.ai users have been hired by:</p>
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 lg:gap-8 opacity-70">
                     {/* Apple */}
                     <img 
@@ -1260,7 +1260,7 @@ function App() {
 
         {/* What you get Section */}
         <section className="mb-8 sm:mb-12 lg:mb-16 border-t border-gray-200 pt-8 sm:pt-12 lg:pt-16">
-          <WhatYouGetGrid isMainPage={!showProfile && !hasResults} />
+          <WhatYouGetGrid />
         </section>
 
         {/* Privacy & control Section */}
@@ -1270,7 +1270,7 @@ function App() {
 
         {/* How to use Section */}
         <section className="mb-8 sm:mb-12 lg:mb-16 border-t border-gray-200 pt-8 sm:pt-12 lg:pt-16">
-          <HowToUseGrid isMainPage={!showProfile && !hasResults} />
+          <HowToUseGrid />
         </section>
 
 
