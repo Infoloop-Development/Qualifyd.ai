@@ -537,8 +537,8 @@ function App() {
                   </button>
                 </div>
                 <div className="pt-3 sm:pt-4">
-                  <p className="text-xs sm:text-sm font-medium text-gray-500 mb-3 sm:mb-4 text-left">Qualifyd.ai users have been hired by:</p>
-                  <div className="flex flex-wrap items-center justify-start gap-4 sm:gap-6 lg:gap-8 opacity-70">
+                  <p className="text-xs sm:text-sm font-medium text-gray-500 mb-3 sm:mb-4 text-center sm:text-left">Qualifyd.ai users have been hired by:</p>
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 lg:gap-8 opacity-70">
                     {/* Apple */}
                     <img 
                       src="https://static.jobscan.co/blog/uploads/Apple_logo_grey.png" 
@@ -586,8 +586,8 @@ function App() {
               </div>
 
               {/* Right Column - Visual Element */}
-              <div className="relative order-2 lg:order-2 mt-8 lg:mt-0">
-                <div className="relative rounded-2xl bg-gradient-to-br from-blue-50 via-purple-50 to-emerald-50 p-4 sm:p-6 lg:p-8 shadow-2xl">
+              <div className="relative order-2 lg:order-2 mt-8 lg:mt-0 max-w-md mx-auto lg:max-w-none lg:mx-0">
+                <div className="relative rounded-2xl bg-gradient-to-br from-blue-50 via-purple-50 to-emerald-50 p-3 sm:p-6 lg:p-8 shadow-2xl scale-90 sm:scale-100">
                   {/* Animated Background Shapes */}
                   <div className="absolute inset-0 overflow-hidden rounded-2xl">
                     <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-blue-200 opacity-20 blur-3xl"></div>
@@ -595,19 +595,19 @@ function App() {
                   </div>
 
                   {/* Main Visual Content */}
-                  <div className="relative space-y-6">
+                  <div className="relative space-y-4 sm:space-y-6">
                     {/* Score Cards */}
-                    <div className="grid grid-cols-3 gap-4">
-                      <div className="bg-white rounded-xl p-4 shadow-lg text-center">
-                        <div className="text-3xl font-bold text-emerald-600">92</div>
+                    <div className="grid grid-cols-3 gap-2 sm:gap-4">
+                      <div className="bg-white rounded-xl p-2 sm:p-4 shadow-lg text-center">
+                        <div className="text-2xl sm:text-3xl font-bold text-emerald-600">92</div>
                         <div className="text-xs text-gray-600 mt-1">Fit Score</div>
                       </div>
-                      <div className="bg-white rounded-xl p-4 shadow-lg text-center">
-                        <div className="text-3xl font-bold text-blue-600">88</div>
+                      <div className="bg-white rounded-xl p-2 sm:p-4 shadow-lg text-center">
+                        <div className="text-2xl sm:text-3xl font-bold text-blue-600">88</div>
                         <div className="text-xs text-gray-600 mt-1">ATS Score</div>
                       </div>
-                      <div className="bg-white rounded-xl p-4 shadow-lg text-center">
-                        <div className="text-3xl font-bold text-purple-600">85</div>
+                      <div className="bg-white rounded-xl p-2 sm:p-4 shadow-lg text-center">
+                        <div className="text-2xl sm:text-3xl font-bold text-purple-600">85</div>
                         <div className="text-xs text-gray-600 mt-1">Writing</div>
                       </div>
                     </div>
