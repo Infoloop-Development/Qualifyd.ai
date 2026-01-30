@@ -5,11 +5,11 @@ import { logger } from "../utils/logger";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pdfParseLib = require("pdf-parse");
 
-// Extract the actual function - pdf-parse might export it directly or as default
+// Extract the actual function - pdf-parse exports an object with PDFParse property
 const pdfParse: (buffer: Buffer) => Promise<{ text: string }> = 
   typeof pdfParseLib === "function" 
     ? pdfParseLib 
-    : pdfParseLib.default || pdfParseLib;
+    : pdfParseLib.PDFParse || pdfParseLib.default || pdfParseLib;
 
 export async function extractText(file: Express.Multer.File): Promise<string> {
   const mime = file.mimetype || "";
