@@ -516,7 +516,12 @@ function App() {
       setShowAuthModal(false);
       setShowProfileMenu(false);
     } catch (err) {
-      setAuthError((err as Error).message);
+      const errorMessage = (err as Error).message.toLowerCase();
+      if (errorMessage.includes("invalid") || errorMessage.includes("incorrect") || errorMessage.includes("login failed") || errorMessage.includes("credentials")) {
+        setAuthError("Incorrect Email Id or Password");
+      } else {
+        setAuthError((err as Error).message);
+      }
     } finally {
       setAuthLoading(false);
     }
