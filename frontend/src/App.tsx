@@ -508,8 +508,8 @@ function App() {
                   </button>
                 </div>
                 <div className="pt-3 sm:pt-4">
-                  <p className="text-xs sm:text-sm font-medium text-gray-500 mb-3 sm:mb-4">Qualifyd.ai users have been hired by:</p>
-                  <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-8 opacity-70">
+                  <p className="text-xs sm:text-sm font-medium text-gray-500 mb-3 sm:mb-4 text-left">Qualifyd.ai users have been hired by:</p>
+                  <div className="flex flex-wrap items-center justify-start gap-4 sm:gap-6 lg:gap-8 opacity-70">
                     {/* Apple */}
                     <img 
                       src="https://static.jobscan.co/blog/uploads/Apple_logo_grey.png" 
