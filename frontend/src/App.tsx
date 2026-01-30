@@ -56,7 +56,7 @@ function HowItWorksGrid() {
       bgColor: "bg-primary-100",
     },
     {
-      icon: <SiPastebin fontSize={40} className="fill-purple-700" />,
+      icon: <SiPastebin fontSize={40} className="fill-secondary-400" />,
       title: "Text Extraction",
       description: "Text extraction + section/skill/keyword detection",
       bgColor: "bg-secondary-100",
@@ -998,7 +998,7 @@ function App() {
                     <label className="mb-1 block text-xs font-medium text-gray-700">Full name</label>
                     <input
                       type="text"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
                       value={authForm.fullName}
                       onChange={(e) => handleAuthInputChange("fullName", e.target.value)}
                     />
@@ -1009,7 +1009,7 @@ function App() {
                   <label className="mb-1 block text-xs font-medium text-gray-700">Email</label>
                   <input
                     type="email"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
                     value={authForm.email}
                     onChange={(e) => handleAuthInputChange("email", e.target.value)}
                   />
@@ -1019,7 +1019,7 @@ function App() {
                   <label className="mb-1 block text-xs font-medium text-gray-700">Password</label>
                   <input
                     type="password"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
                     value={authForm.password}
                     onChange={(e) => handleAuthInputChange("password", e.target.value)}
                   />
@@ -1030,7 +1030,7 @@ function App() {
                     <label className="mb-1 block text-xs font-medium text-gray-700">Confirm password</label>
                     <input
                       type="password"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
                       value={authForm.confirmPassword}
                       onChange={(e) => handleAuthInputChange("confirmPassword", e.target.value)}
                     />
@@ -1063,7 +1063,7 @@ function App() {
                         New user?{" "}
                         <button
                           type="button"
-                          className="font-semibold text-blue-600 hover:underline"
+                          className="font-semibold text-primary-500 hover:underline"
                           onClick={() => setAuthMode("signup")}
                         >
                           Register for free now
@@ -1077,7 +1077,7 @@ function App() {
                         Already a user?{" "}
                         <button
                           type="button"
-                          className="font-semibold text-blue-600 hover:underline"
+                          className="font-semibold text-primary-500 hover:underline"
                           onClick={() => setAuthMode("login")}
                         >
                           Log in here
